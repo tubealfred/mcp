@@ -1,0 +1,27 @@
+startCommand:
+  type: stdio
+  configSchema:
+    type: object
+    required:
+      - tubealfredApiKey
+    properties:
+      tubealfredApiKey:
+        type: string
+        title: "TubeAlfred API key"
+        description: "Create one at https://app.tubealfred.com/api-keys. Live keys start with ta_live_, test keys with ta_test_."
+      tubealfredMcpUrl:
+        type: string
+        title: "MCP URL (advanced)"
+        description: "Override the upstream MCP endpoint. Leave blank for the default https://mcp.tubealfred.com/."
+        default: ""
+  commandFunction: |-
+    (config) => ({
+      command: 'npx',
+      args: ['-y', '@tubealfred/mcp'],
+      env: Object.fromEntries(
+        Object.entries({
+          TUBEALFRED_API_KEY: config.tubealfredApiKey,
+          TUBEALFRED_MCP_URL: config.tubealfredMcpUrl,
+        }).filter(([, value]) => value)
+      ),
+    })
