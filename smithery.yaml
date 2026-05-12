@@ -8,7 +8,7 @@ startCommand:
       tubealfredApiKey:
         type: string
         title: "TubeAlfred API key"
-        description: "Create one at https://app.tubealfred.com/api-keys. Live keys start with ta_live_, test keys with ta_test_."
+        description: "Create one at https://tubealfred.com/app/api-keys. Live keys start with ta_live_, test keys with ta_test_."
       tubealfredMcpUrl:
         type: string
         title: "MCP URL (advanced)"

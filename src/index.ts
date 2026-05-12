@@ -24,7 +24,7 @@ async function main(): Promise<void> {
 
   if (!apiKey) {
     exitWithError(
-      "Missing TUBEALFRED_API_KEY. Generate one at https://app.tubealfred.com/api-keys and pass it as an environment variable to this MCP server.",
+      "Missing TUBEALFRED_API_KEY. Generate one at https://tubealfred.com/app/api-keys and pass it as an environment variable to this MCP server.",
     );
   }
 

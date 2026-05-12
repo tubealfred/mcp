@@ -77,7 +77,7 @@ Smithery prompts for the API key and writes the config for you.
 
 | Env var | Required | Description |
 | --- | --- | --- |
-| `TUBEALFRED_API_KEY` | yes | Your TubeAlfred team key. Create at [app.tubealfred.com/api-keys](https://app.tubealfred.com/api-keys). |
+| `TUBEALFRED_API_KEY` | yes | Your TubeAlfred team key. Create at [tubealfred.com/app/api-keys](https://tubealfred.com/app/api-keys). |
 | `TUBEALFRED_MCP_URL` | no | Override the upstream MCP URL. Defaults to `https://mcp.tubealfred.com/`. |
 
 ## What you get
