@@ -16,6 +16,7 @@
   ],
   "scripts": {
     "build": "tsup",
+    "build:dxt": "pnpm build && node dxt/build.mjs",
     "dev": "tsup --watch",
     "prepublishOnly": "pnpm build"
   },
@@ -39,7 +40,8 @@
     "access": "public"
   },
   "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.0.0"
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "archiver": "^7.0.1"
   },
   "devDependencies": {
     "@types/node": "^25.3.5",
