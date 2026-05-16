@@ -34,7 +34,7 @@ Edit `~/Library/Application Support/Claude/claude_desktop_config.json` (macOS) o
 }
 ```
 
-Restart Claude Desktop. The TubeAlfred tools (video, channel, transcript, comments, search, playlist) will appear in the tool list.
+Restart Claude Desktop. The TubeAlfred tools for video, transcript, comments, replies, channels, Shorts, playlists, community posts, search, hashtags, suggestions, and URL resolution will appear in the tool list.
 
 ### Cursor
 
