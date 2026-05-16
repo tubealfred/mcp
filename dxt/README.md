@@ -20,6 +20,8 @@ dxt/dist/tubealfred-youtube.dxt
 - `server/index.js` is the bundled `@tubealfred/mcp` stdio bridge.
 - `icon.png` is copied into the bundle when present.
 
+The extension connects Claude Desktop to the hosted TubeAlfred MCP server at `https://mcp.tubealfred.com/` and exposes the same 12 read-only YouTube tools listed in the package README.
+
 ## Install
 
 1. Download `tubealfred-youtube.dxt` from a release.

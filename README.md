@@ -14,7 +14,7 @@ Download the latest Desktop Extension:
 
 Double-click `tubealfred-youtube.dxt`, approve the Claude Desktop install prompt, then paste your TubeAlfred API key when prompted. This is the recommended path for non-terminal users.
 
-You don't install it directly — your MCP client runs it on demand via `npx`.
+For non-Claude Desktop clients, use the `npx` stdio bridge below.
 
 ### Claude Desktop
 
@@ -92,9 +92,14 @@ Smithery prompts for the API key and writes the config for you.
 
 Every tool published at `mcp.tubealfred.com` appears in your MCP client:
 
-- Video — details, transcript, comments, comment replies
-- Channel — details, video feed
-- Discovery — search, search suggestions, playlists, URL resolution
+- `youtube_video_details` — video title, counts, duration, keywords, channel, and transcript metadata
+- `youtube_video_transcript` — optimized transcript fetch
+- `youtube_video_comments` and `youtube_video_comments_page` — comment pagination
+- `youtube_comment_replies` and `youtube_comment_replies_page` — reply-thread pagination
+- `youtube_channel_details` and `youtube_channel_videos` — channel profile and video feed
+- `youtube_search` and `youtube_search_suggestions` — discovery workflows
+- `youtube_playlist_videos` — playlist video pagination
+- `youtube_url_resolver` — parse YouTube URLs into canonical IDs
 
 Credits, rate limits, and quota are documented at <https://tubealfred.com/docs#limits>.
 

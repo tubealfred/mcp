@@ -3,14 +3,14 @@
   "name": "tubealfred-youtube",
   "display_name": "TubeAlfred YouTube",
   "version": "0.1.0",
-  "description": "Fetch YouTube video, channel, transcript, comments, search, and playlist data from inside Claude Desktop. Uses the TubeAlfred API.",
-  "long_description": "TubeAlfred exposes 12 YouTube research tools (video details, transcripts, comments + reply threads, channel feeds, search, playlists, URL resolution) through one hosted MCP server. Install this extension, paste your API key, and the tools appear in Claude Desktop's tool list.\n\nCredits: 1 per call for most endpoints. Comment endpoints meter per item: 1 credit per 5 comments, 100-comment minimum per call.",
+  "description": "Fetch YouTube video, channel, transcript, comments, replies, search, and playlist data from inside Claude Desktop. Uses the TubeAlfred API.",
+  "long_description": "TubeAlfred exposes 12 read-only YouTube research tools through one hosted MCP server: youtube_video_details, youtube_video_transcript, youtube_video_comments, youtube_video_comments_page, youtube_comment_replies, youtube_comment_replies_page, youtube_channel_details, youtube_channel_videos, youtube_search, youtube_search_suggestions, youtube_playlist_videos, and youtube_url_resolver. Install this extension, paste your API key, and the tools appear in Claude Desktop's tool list.\n\nCredits: 1 per call for most endpoints. Comment endpoints meter per item: 1 credit per 5 comments, 100-comment minimum per call.",
   "author": {
     "name": "TubeAlfred",
     "email": "contact@tubealfred.com",
     "url": "https://tubealfred.com"
   },
-  "homepage": "https://tubealfred.com/docs",
+  "homepage": "https://tubealfred.com/mcp",
   "documentation": "https://tubealfred.com/docs",
   "support": "mailto:contact@tubealfred.com",
   "update_url": "https://tubealfred.com/dxt/updates.json",
