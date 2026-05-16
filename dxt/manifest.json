@@ -4,7 +4,7 @@
   "display_name": "TubeAlfred YouTube",
   "version": "0.1.0",
   "description": "Fetch YouTube video, channel, transcript, comments, replies, search, and playlist data from inside Claude Desktop. Uses the TubeAlfred API.",
-  "long_description": "TubeAlfred exposes 12 read-only YouTube research tools through one hosted MCP server: youtube.video.get, youtube.video.transcript, youtube.comments.list, youtube.comments.page, youtube.replies.list, youtube.replies.page, youtube.channel.get, youtube.channel.videos, youtube.search.query, youtube.search.suggest, youtube.playlist.get, and youtube.url.resolve. Install this extension, paste your API key, and the tools appear in Claude Desktop's tool list.\n\nCredits: 1 per call for most endpoints. Comment endpoints meter per item: 1 credit per 5 comments, 100-comment minimum per call.",
+  "long_description": "TubeAlfred exposes 17 read-only YouTube research tools through one hosted MCP server: youtube.video.get, youtube.video.transcript, youtube.comments.list, youtube.comments.page, youtube.replies.list, youtube.replies.page, youtube.channel.get, youtube.channel.about, youtube.channel.videos, youtube.channel.shorts, youtube.channel.playlists, youtube.channel.community, youtube.search.query, youtube.search.suggest, youtube.search.hashtag, youtube.playlist.get, and youtube.url.resolve. Install this extension, paste your API key, and the tools appear in Claude Desktop's tool list.\n\nCredits: 1 per call for most endpoints. Comment endpoints meter per item: 1 credit per 5 comments, 100-comment minimum per call.",
   "author": {
     "name": "TubeAlfred",
     "email": "contact@tubealfred.com",

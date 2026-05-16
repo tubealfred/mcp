@@ -96,8 +96,8 @@ Every tool published at `mcp.tubealfred.com` appears in your MCP client:
 - `youtube.video.transcript` — optimized transcript fetch
 - `youtube.comments.list` and `youtube.comments.page` — comment pagination
 - `youtube.replies.list` and `youtube.replies.page` — reply-thread pagination
-- `youtube.channel.get` and `youtube.channel.videos` — channel profile and video feed
-- `youtube.search.query` and `youtube.search.suggest` — discovery workflows
+- `youtube.channel.get`, `youtube.channel.about`, `youtube.channel.videos`, `youtube.channel.shorts`, `youtube.channel.playlists`, and `youtube.channel.community` — channel profile, about, video, Shorts, playlist, and community feeds
+- `youtube.search.query`, `youtube.search.suggest`, and `youtube.search.hashtag` — discovery workflows
 - `youtube.playlist.get` — playlist video pagination
 - `youtube.url.resolve` — parse YouTube URLs into canonical IDs
 

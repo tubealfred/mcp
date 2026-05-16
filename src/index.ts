@@ -1,9 +1,10 @@
 import { StreamableHTTPClientTransport } from "@modelcontextprotocol/sdk/client/streamableHttp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import type { JSONRPCMessage } from "@modelcontextprotocol/sdk/types.js";
+import packageJson from "../package.json";
 
 const PRODUCT_NAME = "TubeAlfred YouTube MCP";
-const PACKAGE_VERSION = "0.1.0";
+const PACKAGE_VERSION = packageJson.version;
 const DEFAULT_MCP_URL = "https://mcp.tubealfred.com/";
 
 function readEnv(name: string): string | undefined {
