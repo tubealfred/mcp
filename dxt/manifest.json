@@ -13,6 +13,7 @@
   "homepage": "https://tubealfred.com/docs",
   "documentation": "https://tubealfred.com/docs",
   "support": "mailto:contact@tubealfred.com",
+  "update_url": "https://tubealfred.com/dxt/updates.json",
   "icon": "icon.png",
   "keywords": ["youtube", "research", "transcripts", "comments", "tubealfred"],
   "license": "MIT",

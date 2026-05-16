@@ -6,6 +6,14 @@ Use the same API key for the REST API at `api.tubealfred.com` and this MCP surfa
 
 ## Install
 
+### Claude Desktop one-click extension
+
+Download the latest Desktop Extension:
+
+<https://github.com/tubealfred/mcp/releases/latest/download/tubealfred-youtube.dxt>
+
+Double-click `tubealfred-youtube.dxt`, approve the Claude Desktop install prompt, then paste your TubeAlfred API key when prompted. This is the recommended path for non-terminal users.
+
 You don't install it directly — your MCP client runs it on demand via `npx`.
 
 ### Claude Desktop

@@ -11,6 +11,7 @@ const stdioDist = resolve(repoRoot, "dist", "index.js");
 const staging = resolve(here, "staging");
 const distDir = resolve(here, "dist");
 const outputFile = resolve(distDir, "tubealfred-youtube.dxt");
+const updatesFile = resolve(distDir, "updates.json");
 
 async function ensureCleanDir(path) {
   await rm(path, { recursive: true, force: true });
@@ -38,8 +39,12 @@ async function main() {
   await mkdir(resolve(staging, "server"), { recursive: true });
   await copyFile(stdioDist, resolve(staging, "server", "index.js"));
 
-  const manifest = await readFile(resolve(here, "manifest.json"), "utf8");
-  await writeFile(resolve(staging, "manifest.json"), manifest);
+  const packageJson = JSON.parse(await readFile(resolve(repoRoot, "package.json"), "utf8"));
+  const manifest = JSON.parse(await readFile(resolve(here, "manifest.json"), "utf8"));
+  manifest.version = packageJson.version;
+  manifest.update_url = "https://tubealfred.com/dxt/updates.json";
+
+  await writeFile(resolve(staging, "manifest.json"), `${JSON.stringify(manifest, null, 2)}\n`);
 
   await copyIfExists(resolve(here, "icon.png"), resolve(staging, "icon.png"));
 
@@ -55,6 +60,13 @@ async function main() {
   });
 
   process.stdout.write(`Built ${outputFile}\n`);
+
+  await writeFile(updatesFile, `${JSON.stringify({
+    latest_version: packageJson.version,
+    download_url: `https://github.com/tubealfred/mcp/releases/download/v${packageJson.version}/tubealfred-youtube.dxt`,
+    release_notes: `https://github.com/tubealfred/mcp/releases/tag/v${packageJson.version}`,
+  }, null, 2)}\n`);
+  process.stdout.write(`Built ${updatesFile}\n`);
 }
 
 main().catch((error) => {
