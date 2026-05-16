@@ -92,14 +92,14 @@ Smithery prompts for the API key and writes the config for you.
 
 Every tool published at `mcp.tubealfred.com` appears in your MCP client:
 
-- `youtube.video.get` — video title, counts, duration, keywords, channel, and transcript metadata
-- `youtube.video.transcript` — optimized transcript fetch
-- `youtube.comments.list` and `youtube.comments.page` — comment pagination
-- `youtube.replies.list` and `youtube.replies.page` — reply-thread pagination
-- `youtube.channel.get`, `youtube.channel.about`, `youtube.channel.videos`, `youtube.channel.shorts`, `youtube.channel.playlists`, and `youtube.channel.community` — channel profile, about, video, Shorts, playlist, and community feeds
-- `youtube.search.query`, `youtube.search.suggest`, and `youtube.search.hashtag` — discovery workflows
-- `youtube.playlist.get` — playlist video pagination
-- `youtube.url.resolve` — parse YouTube URLs into canonical IDs
+- `youtube_video_get` — video title, counts, duration, keywords, channel, and transcript metadata
+- `youtube_video_transcript` — optimized transcript fetch
+- `youtube_comments_list` and `youtube_comments_page` — comment pagination
+- `youtube_replies_list` and `youtube_replies_page` — reply-thread pagination
+- `youtube_channel_get`, `youtube_channel_about`, `youtube_channel_videos`, `youtube_channel_shorts`, `youtube_channel_playlists`, and `youtube_channel_community` — channel profile, about, video, Shorts, playlist, and community feeds
+- `youtube_search_query`, `youtube_search_suggest`, and `youtube_search_hashtag` — discovery workflows
+- `youtube_playlist_get` — playlist video pagination
+- `youtube_url_resolve` — parse YouTube URLs into canonical IDs
 
 Credits, rate limits, and quota are documented at <https://tubealfred.com/docs#limits>.
 
