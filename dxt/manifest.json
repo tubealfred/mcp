@@ -13,7 +13,6 @@
   "homepage": "https://tubealfred.com/mcp",
   "documentation": "https://tubealfred.com/docs",
   "support": "mailto:contact@tubealfred.com",
-  "update_url": "https://tubealfred.com/dxt/updates.json",
   "icon": "icon.png",
   "keywords": ["youtube", "research", "transcripts", "comments", "tubealfred"],
   "license": "MIT",
@@ -38,7 +37,6 @@
     }
   },
   "compatibility": {
-    "client": ">=0.10.0",
     "runtimes": {
       "node": ">=18.0.0"
     }

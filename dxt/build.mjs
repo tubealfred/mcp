@@ -42,7 +42,6 @@ async function main() {
   const packageJson = JSON.parse(await readFile(resolve(repoRoot, "package.json"), "utf8"));
   const manifest = JSON.parse(await readFile(resolve(here, "manifest.json"), "utf8"));
   manifest.version = packageJson.version;
-  manifest.update_url = "https://tubealfred.com/dxt/updates.json";
 
   await writeFile(resolve(staging, "manifest.json"), `${JSON.stringify(manifest, null, 2)}\n`);
 
