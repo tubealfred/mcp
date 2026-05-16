@@ -92,14 +92,14 @@ Smithery prompts for the API key and writes the config for you.
 
 Every tool published at `mcp.tubealfred.com` appears in your MCP client:
 
-- `fetch_youtube_video` — video title, counts, duration, keywords, channel, and transcript metadata
-- `fetch_youtube_transcript` — optimized transcript fetch
-- `fetch_youtube_comments` and `fetch_youtube_comments_page` — comment pagination
-- `fetch_youtube_comment_replies` and `fetch_youtube_comment_replies_page` — reply-thread pagination
-- `fetch_youtube_channel` and `fetch_youtube_channel_videos` — channel profile and video feed
-- `search_youtube` and `suggest_youtube_searches` — discovery workflows
-- `fetch_youtube_playlist` — playlist video pagination
-- `resolve_youtube_url` — parse YouTube URLs into canonical IDs
+- `youtube.video.get` — video title, counts, duration, keywords, channel, and transcript metadata
+- `youtube.video.transcript` — optimized transcript fetch
+- `youtube.comments.list` and `youtube.comments.page` — comment pagination
+- `youtube.replies.list` and `youtube.replies.page` — reply-thread pagination
+- `youtube.channel.get` and `youtube.channel.videos` — channel profile and video feed
+- `youtube.search.query` and `youtube.search.suggest` — discovery workflows
+- `youtube.playlist.get` — playlist video pagination
+- `youtube.url.resolve` — parse YouTube URLs into canonical IDs
 
 Credits, rate limits, and quota are documented at <https://tubealfred.com/docs#limits>.
 
