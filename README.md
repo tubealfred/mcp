@@ -76,7 +76,7 @@ export TUBEALFRED_API_KEY=ta_live_...
 ### Smithery
 
 ```bash
-npx -y @smithery/cli install @tubealfred/mcp --client claude
+npx -y @smithery/cli install tubealfred/youtube --client claude
 ```
 
 Smithery prompts for the API key and writes the config for you.
