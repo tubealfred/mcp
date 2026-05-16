@@ -1,0 +1,36 @@
+name: Publish Smithery
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  smithery:
+    name: Publish to Smithery
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Verify Smithery token
+        run: test -n "$SMITHERY_API_KEY"
+        env:
+          SMITHERY_API_KEY: ${{ secrets.SMITHERY_API_KEY }}
+
+      - name: Publish external MCP server
+        env:
+          SMITHERY_API_KEY: ${{ secrets.SMITHERY_API_KEY }}
+        run: |
+          npx -y @smithery/cli mcp publish "https://mcp.tubealfred.com/" \
+            -n tubealfred/youtube \
+            --config-schema '{"type":"object","properties":{"apiKey":{"type":"string","title":"TubeAlfred API key","description":"Your TubeAlfred API key.","x-from":{"header":"tubealfred-api-key"},"x-to":{"header":"X-API-Key"}}},"required":["apiKey"]}'
