@@ -10,9 +10,9 @@ Use the same API key for the REST API at `api.tubealfred.com` and this MCP surfa
 
 Download the latest Desktop Extension:
 
-<https://github.com/tubealfred/mcp/releases/latest/download/tubealfred-youtube.dxt>
+<https://github.com/tubealfred/mcp/releases/latest/download/tubealfred-youtube.mcpb>
 
-Double-click `tubealfred-youtube.dxt`, approve the Claude Desktop install prompt, then paste your TubeAlfred API key when prompted. This is the recommended path for non-terminal users.
+Double-click `tubealfred-youtube.mcpb`, approve the Claude Desktop install prompt, then paste your TubeAlfred API key when prompted. This is the recommended path for non-terminal users.
 
 For non-Claude Desktop clients, use the `npx` stdio bridge below.
 
