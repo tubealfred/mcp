@@ -1,17 +1,17 @@
 # TubeAlfred Claude Desktop Extension
 
-Builds `tubealfred-youtube.dxt`, the Claude Desktop extension bundle for `@tubealfred/mcp`.
+Builds `tubealfred-youtube.mcpb`, the Claude Desktop extension bundle for `@tubealfred/mcp`.
 
 ## Build
 
 ```bash
-pnpm build:dxt
+pnpm build:mcpb
 ```
 
 Output:
 
 ```text
-dxt/dist/tubealfred-youtube.dxt
+mcpb/dist/tubealfred-youtube.mcpb
 ```
 
 ## What's Inside
@@ -24,6 +24,6 @@ The extension connects Claude Desktop to the hosted TubeAlfred MCP server at `ht
 
 ## Install
 
-1. Download `tubealfred-youtube.dxt` from a release.
+1. Download `tubealfred-youtube.mcpb` from a release.
 2. Open Claude Desktop settings.
 3. Install the extension file and paste your TubeAlfred API key.

@@ -16,7 +16,7 @@
   ],
   "scripts": {
     "build": "tsup",
-    "build:dxt": "pnpm build && node dxt/build.mjs",
+    "build:mcpb": "pnpm build && node mcpb/build.mjs",
     "dev": "tsup --watch",
     "prepublishOnly": "pnpm build"
   },

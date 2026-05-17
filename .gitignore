@@ -1,6 +1,6 @@
 node_modules/
 dist/
-dxt/staging/
+mcpb/staging/
 coverage/
 *.tgz
 .DS_Store
