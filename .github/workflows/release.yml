@@ -1,4 +1,4 @@
-name: Release DXT
+name: Release MCPB
 
 on:
   push:
@@ -31,13 +31,13 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Build DXT
-        run: pnpm build:dxt
+      - name: Build MCPB
+        run: pnpm build:mcpb
 
       - name: Publish GitHub release
         uses: softprops/action-gh-release@v2
         with:
           files: |
-            dxt/dist/*.dxt
-            dxt/dist/updates.json
+            mcpb/dist/*.mcpb
+            mcpb/dist/updates.json
           generate_release_notes: true
