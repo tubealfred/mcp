@@ -34,7 +34,7 @@ Edit `~/Library/Application Support/Claude/claude_desktop_config.json` (macOS) o
 }
 ```
 
-Restart Claude Desktop. The TubeAlfred tools for video, transcript, comments, replies, channels, Shorts, playlists, community posts, search, hashtags, suggestions, and URL resolution will appear in the tool list.
+Restart Claude Desktop. The TubeAlfred YouTube tools for video, transcript, comments, replies, related videos, channels, streams, Shorts, playlists, community posts, search, hashtags, suggestions, trending, batch lookups, and URL resolution will appear in the tool list.
 
 ### Cursor
 
@@ -92,14 +92,17 @@ Smithery prompts for the API key and writes the config for you.
 
 Every tool published at `mcp.tubealfred.com` appears in your MCP client:
 
-- `youtube_video_get` — video title, counts, duration, keywords, channel, and transcript metadata
-- `youtube_video_transcript` — optimized transcript fetch
+- `youtube_video_get` and `youtube_video_enhanced` — video title, counts, duration, keywords, channel, transcript metadata, and enhanced detail fields
+- `youtube_video_transcript` and `youtube_video_transcript_full` — optimized and full transcript fetches
 - `youtube_comments_list` and `youtube_comments_page` — comment pagination
 - `youtube_replies_list` and `youtube_replies_page` — reply-thread pagination
-- `youtube_channel_get`, `youtube_channel_about`, `youtube_channel_videos`, `youtube_channel_shorts`, `youtube_channel_playlists`, and `youtube_channel_community` — channel profile, about, video, Shorts, playlist, and community feeds
-- `youtube_search_query`, `youtube_search_suggest`, and `youtube_search_hashtag` — discovery workflows
-- `youtube_playlist_get` — playlist video pagination
+- `youtube_related_videos` and `youtube_related_videos_page` — related video discovery and pagination
+- `youtube_channel_get`, `youtube_channel_about`, `youtube_channel_videos`, `youtube_channel_videos_page`, `youtube_channel_streams`, `youtube_channel_streams_page`, `youtube_channel_shorts`, `youtube_channel_shorts_page`, `youtube_channel_playlists`, `youtube_channel_playlists_page`, `youtube_channel_community`, and `youtube_channel_community_page` — channel profile, about, video, stream, Shorts, playlist, and community feeds
+- `youtube_search_query`, `youtube_search_page`, `youtube_search_suggest`, `youtube_search_hashtag`, and `youtube_search_hashtag_page` — discovery workflows
+- `youtube_trending` and `youtube_trending_shorts` — trending video and Shorts feeds
+- `youtube_playlist_get`, `youtube_playlist_metadata`, and `youtube_playlist_page` — playlist metadata and video pagination
 - `youtube_url_resolve` — parse YouTube URLs into canonical IDs
+- `youtube_videos_batch` and `youtube_channels_batch` — batch detail lookups
 
 Credits, rate limits, and quota are documented at <https://tubealfred.com/docs#limits>.
 

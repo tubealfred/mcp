@@ -18,6 +18,7 @@
     "build": "tsup",
     "build:mcpb": "pnpm build && node mcpb/build.mjs",
     "dev": "tsup --watch",
+    "test": "node --test tests/*.test.mjs",
     "prepublishOnly": "pnpm build"
   },
   "keywords": [
