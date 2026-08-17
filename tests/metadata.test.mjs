@@ -11,7 +11,6 @@ const expectedTools = [
   "youtube_video_get",
   "youtube_video_enhanced",
   "youtube_video_transcript",
-  "youtube_video_transcript_full",
   "youtube_comments_list",
   "youtube_comments_page",
   "youtube_replies_list",
@@ -46,8 +45,10 @@ const expectedTools = [
 ];
 
 assert.equal(packageJson.name, "@tubealfred/mcp");
-assert.equal(expectedTools.length, 35);
-assert.match(manifest.long_description, /35 read-only YouTube research tools/);
+assert.equal(packageJson.version, manifest.version);
+assert.equal(expectedTools.length, 34);
+assert.match(manifest.long_description, /34 read-only YouTube research tools/);
+assert.doesNotMatch(manifest.long_description, /youtube_video_transcript_full/);
 
 for (const tool of expectedTools) {
   assert.match(readme, new RegExp(`\\b${tool}\\b`), `README should mention ${tool}`);

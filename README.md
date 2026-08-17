@@ -93,7 +93,7 @@ Smithery prompts for the API key and writes the config for you.
 Every tool published at `mcp.tubealfred.com` appears in your MCP client:
 
 - `youtube_video_get` and `youtube_video_enhanced` — video title, counts, duration, keywords, channel, transcript metadata, and enhanced detail fields
-- `youtube_video_transcript` and `youtube_video_transcript_full` — optimized and full transcript fetches
+- `youtube_video_transcript` — transcript text, timed segments, language metadata, and expected unavailable outcomes
 - `youtube_comments_list` and `youtube_comments_page` — comment pagination
 - `youtube_replies_list` and `youtube_replies_page` — reply-thread pagination
 - `youtube_related_videos` and `youtube_related_videos_page` — related video discovery and pagination
