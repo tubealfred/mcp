@@ -90,19 +90,7 @@ Smithery prompts for the API key and writes the config for you.
 
 ## What you get
 
-Every tool published at `mcp.tubealfred.com` appears in your MCP client:
-
-- `youtube_video_get` and `youtube_video_enhanced` — video title, counts, duration, keywords, channel, transcript metadata, and enhanced detail fields
-- `youtube_video_transcript` — transcript text, timed segments, language metadata, and expected unavailable outcomes
-- `youtube_comments_list` and `youtube_comments_page` — comment pagination
-- `youtube_replies_list` and `youtube_replies_page` — reply-thread pagination
-- `youtube_related_videos` and `youtube_related_videos_page` — related video discovery and pagination
-- `youtube_channel_get`, `youtube_channel_about`, `youtube_channel_videos`, `youtube_channel_videos_page`, `youtube_channel_streams`, `youtube_channel_streams_page`, `youtube_channel_shorts`, `youtube_channel_shorts_page`, `youtube_channel_playlists`, `youtube_channel_playlists_page`, `youtube_channel_community`, and `youtube_channel_community_page` — channel profile, about, video, stream, Shorts, playlist, and community feeds
-- `youtube_search_query`, `youtube_search_page`, `youtube_search_suggest`, `youtube_search_hashtag`, and `youtube_search_hashtag_page` — discovery workflows
-- `youtube_trending` and `youtube_trending_shorts` — trending video and Shorts feeds
-- `youtube_playlist_get`, `youtube_playlist_metadata`, and `youtube_playlist_page` — playlist metadata and video pagination
-- `youtube_url_resolve` — parse YouTube URLs into canonical IDs
-- `youtube_videos_batch` and `youtube_channels_batch` — batch detail lookups
+Every public tool published at `mcp.tubealfred.com` appears in your MCP client. The current 34-tool inventory, REST operation mapping, parameters, costs, and visibility are published in the [versioned operation manifest](https://tubealfred.com/.well-known/tubealfred-youtube-operations.v1.json); MCPB metadata is generated from its public capability set.
 
 Credits, rate limits, and quota are documented at <https://tubealfred.com/docs#limits>.
 
