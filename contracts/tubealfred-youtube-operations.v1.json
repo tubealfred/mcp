@@ -49,6 +49,7 @@
           "channel_details"
         ],
         "endpoint": {
+          "order": 1,
           "label": "Channel details",
           "summary": "Channel name, avatar, subscribers, and description.",
           "description": "Accepts a UC channel ID, @handle, or username.",
@@ -128,6 +129,7 @@
           "channel_about"
         ],
         "endpoint": {
+          "order": 8,
           "label": "Channel about",
           "summary": "Channel about section.",
           "description": "Country, join date, total views, and channel links when available.",
@@ -207,6 +209,7 @@
           "channel_videos"
         ],
         "endpoint": {
+          "order": 2,
           "label": "Channel videos",
           "summary": "Latest videos for a channel.",
           "description": "Supports continuation_token pagination.",
@@ -291,6 +294,7 @@
           "channel_videos_page"
         ],
         "endpoint": {
+          "order": 3,
           "label": "Channel videos page",
           "summary": "Next videos page for a channel.",
           "description": "Fetches subsequent channel video pages using a continuation token.",
@@ -374,6 +378,7 @@
           "channel_streams"
         ],
         "endpoint": {
+          "order": 4,
           "label": "Channel live streams",
           "summary": "Live streams for a channel.",
           "description": "Supports continuation_token pagination.",
@@ -458,6 +463,7 @@
           "channel_streams_page"
         ],
         "endpoint": {
+          "order": 5,
           "label": "Channel live streams page",
           "summary": "Next live streams page for a channel.",
           "description": "Fetches subsequent live stream pages using a continuation token.",
@@ -541,6 +547,7 @@
           "channel_shorts"
         ],
         "endpoint": {
+          "order": 6,
           "label": "Channel shorts",
           "summary": "Latest Shorts for a channel.",
           "description": "Supports continuation_token pagination.",
@@ -625,6 +632,7 @@
           "channel_shorts_page"
         ],
         "endpoint": {
+          "order": 7,
           "label": "Channel shorts page",
           "summary": "Next Shorts page for a channel.",
           "description": "Fetches subsequent Shorts pages using a continuation token.",
@@ -708,6 +716,7 @@
           "channel_playlists"
         ],
         "endpoint": {
+          "order": 9,
           "label": "Channel playlists",
           "summary": "Published playlists for a channel.",
           "description": "Supports continuation_token pagination.",
@@ -792,6 +801,7 @@
           "channel_playlists_page"
         ],
         "endpoint": {
+          "order": 10,
           "label": "Channel playlists page",
           "summary": "Next playlists page for a channel.",
           "description": "Fetches subsequent playlist pages using a continuation token.",
@@ -875,6 +885,7 @@
           "channel_community"
         ],
         "endpoint": {
+          "order": 11,
           "label": "Channel community posts",
           "summary": "Community tab posts for a channel.",
           "description": "Supports continuation_token pagination when the channel has a community tab.",
@@ -959,6 +970,7 @@
           "channel_community_page"
         ],
         "endpoint": {
+          "order": 12,
           "label": "Channel community posts page",
           "summary": "Next community posts page for a channel.",
           "description": "Fetches subsequent community pages using a continuation token.",
@@ -1032,6 +1044,7 @@
           "playlist_metadata"
         ],
         "endpoint": {
+          "order": 28,
           "label": "Playlist metadata",
           "summary": "Playlist metadata.",
           "description": "Returns playlist title, description, thumbnail, counts, and author details.",
@@ -1101,6 +1114,7 @@
           "playlist_contents"
         ],
         "endpoint": {
+          "order": 29,
           "label": "Playlist contents",
           "summary": "Playlist contents.",
           "description": "Returns playlist videos with optional continuation token.",
@@ -1180,6 +1194,7 @@
           "playlist_page"
         ],
         "endpoint": {
+          "order": 30,
           "label": "Playlist page",
           "summary": "Next page of playlist contents.",
           "description": "Fetches subsequent playlist video pages using a continuation token.",
@@ -1258,6 +1273,7 @@
           "search_suggestions"
         ],
         "endpoint": {
+          "order": 25,
           "label": "Search suggestions",
           "summary": "Autocomplete suggestions.",
           "description": "Suggestion endpoint used to build search assistance.",
@@ -1332,6 +1348,7 @@
           "search_hashtag"
         ],
         "endpoint": {
+          "order": 26,
           "label": "Hashtag search",
           "summary": "Search YouTube by hashtag.",
           "description": "Supports continuation_token pagination.",
@@ -1417,6 +1434,7 @@
           "search_hashtag_page"
         ],
         "endpoint": {
+          "order": 27,
           "label": "Hashtag search page",
           "summary": "Next page of hashtag search results.",
           "description": "Fetches subsequent hashtag pages using a continuation token.",
@@ -1615,6 +1633,7 @@
           "search_page"
         ],
         "endpoint": {
+          "order": 24,
           "label": "Search page",
           "summary": "Next page of YouTube search results.",
           "description": "Fetches subsequent search pages using a continuation token.",
@@ -1720,6 +1739,7 @@
           "trending"
         ],
         "endpoint": {
+          "order": 34,
           "label": "Trending videos",
           "summary": "Trending videos.",
           "description": "Returns currently trending YouTube videos.",
@@ -1760,6 +1780,7 @@
           "trending_shorts"
         ],
         "endpoint": {
+          "order": 35,
           "label": "Trending Shorts",
           "summary": "Trending Shorts.",
           "description": "Returns currently trending YouTube Shorts.",
@@ -1821,6 +1842,7 @@
           "video_details"
         ],
         "endpoint": {
+          "order": 13,
           "label": "Video details",
           "summary": "Title, views, likes, comments, and duration.",
           "description": "Video details including counts, publish date, channel info, duration, keywords, and transcript.",
@@ -1899,6 +1921,7 @@
           "video_enhanced"
         ],
         "endpoint": {
+          "order": 22,
           "label": "Enhanced video details",
           "summary": "Enhanced video details.",
           "description": "Video details plus live/category/chapter/related-video data when available.",
@@ -1992,6 +2015,7 @@
           "video_transcript"
         ],
         "endpoint": {
+          "order": 14,
           "label": "Video transcript",
           "summary": "Video transcript.",
           "description": "Fetches transcript text, timed segments, language metadata, and available caption tracks.",
@@ -2096,6 +2120,7 @@
           "video_comments"
         ],
         "endpoint": {
+          "order": 16,
           "label": "Video comments",
           "summary": "First comments page for a video.",
           "description": "Returns the first page of comments and a continuation token when more pages are available.",
@@ -2197,6 +2222,7 @@
           "video_comments_page"
         ],
         "endpoint": {
+          "order": 17,
           "label": "Video comments page",
           "summary": "Paginated comments for a video.",
           "description": "Fetches subsequent comment pages using the continuation token returned by the first page.",
@@ -2314,6 +2340,7 @@
           "video_comment_replies"
         ],
         "endpoint": {
+          "order": 18,
           "label": "Comment replies",
           "summary": "First replies page for a top-level comment.",
           "description": "Returns replies for one top-level comment and a continuation token when more replies are available.",
@@ -2430,6 +2457,7 @@
           "video_comment_replies_page"
         ],
         "endpoint": {
+          "order": 19,
           "label": "Comment replies page",
           "summary": "Paginated replies for a top-level comment.",
           "description": "Fetches subsequent reply pages using the continuation token returned by the first replies page.",
@@ -2526,6 +2554,7 @@
           "video_related"
         ],
         "endpoint": {
+          "order": 20,
           "label": "Related videos",
           "summary": "Related videos.",
           "description": "Supports continuation_token pagination.",
@@ -2609,6 +2638,7 @@
           "video_related_page"
         ],
         "endpoint": {
+          "order": 21,
           "label": "Related videos page",
           "summary": "Next related videos page.",
           "description": "Fetches subsequent related video pages using a continuation token.",
@@ -2706,6 +2736,7 @@
           "video_transcript_fast"
         ],
         "endpoint": {
+          "order": 15,
           "label": "Video transcript fast",
           "summary": "Optimized transcript fetch.",
           "description": "Recommended transcript endpoint.",
@@ -2784,6 +2815,7 @@
           "utility_resolve"
         ],
         "endpoint": {
+          "order": 31,
           "label": "Resolve URL",
           "summary": "Resolve any YouTube URL to its type and extracted IDs.",
           "description": "Turns arbitrary YouTube URLs into canonical IDs.",
@@ -2858,6 +2890,7 @@
           "videos_batch"
         ],
         "endpoint": {
+          "order": 32,
           "label": "Batch video details",
           "summary": "Batch video details lookup.",
           "description": "Fetch details for up to 50 YouTube video IDs.",
@@ -2944,6 +2977,7 @@
           "channels_batch"
         ],
         "endpoint": {
+          "order": 33,
           "label": "Batch channel details",
           "summary": "Batch channel details lookup.",
           "description": "Fetch details for up to 50 YouTube channel IDs, handles, or usernames.",
@@ -3128,6 +3162,7 @@
           "search"
         ],
         "endpoint": {
+          "order": 23,
           "label": "Search",
           "summary": "YouTube search.",
           "description": "Primary search endpoint with optional filters and continuation token. Each result description is YouTube's truncated snippet; use the video endpoint for the full description.",
