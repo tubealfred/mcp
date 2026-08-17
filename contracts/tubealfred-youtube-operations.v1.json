@@ -1,0 +1,3252 @@
+{
+  "schema_version": 1,
+  "manifest_version": "1.1.0",
+  "api": {
+    "title": "TubeAlfred YouTube API",
+    "version": "1.0.0",
+    "base_path": "/v1"
+  },
+  "operation_count": 35,
+  "operations": [
+    {
+      "id": "channel_details",
+      "method": "GET",
+      "path": "/v1/youtube/channel/{channel_id}",
+      "summary": "Channel details",
+      "description": "Fetch YouTube channel details through TubeAlfred.",
+      "credit_cost": "1 credit per call",
+      "deprecated": false,
+      "parameters": [
+        {
+          "name": "fields",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "type": "string",
+            "example": "id,title"
+          },
+          "description": "Comma-separated response fields to include."
+        },
+        {
+          "name": "channel_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "example": "UC... or @handle"
+          },
+          "description": "Use a channel ID, @handle, or username."
+        }
+      ],
+      "mcp": {
+        "name": "youtube_channel_get",
+        "title": "Get Channel",
+        "public": true
+      },
+      "platform": {
+        "class_basename": "GetChannelTool",
+        "documented_endpoint_keys": [
+          "channel_details"
+        ],
+        "endpoint": {
+          "order": 1,
+          "label": "Channel details",
+          "summary": "Channel name, avatar, subscribers, and description.",
+          "description": "Accepts a UC channel ID, @handle, or username.",
+          "insight_identifiers": {
+            "channel_id": "channel_id"
+          },
+          "parameters": {
+            "fields": {
+              "label": "Fields",
+              "placeholder": "id,title",
+              "helper_text": "Comma-separated response fields to include."
+            },
+            "channel_id": {
+              "label": "Channel ID / handle",
+              "placeholder": "UC... or @handle",
+              "helper_text": "Use a channel ID, @handle, or username.",
+              "rules": [
+                "min:1",
+                "max:100",
+                "regex:/^(UC[a-zA-Z0-9_-]{22}|@[a-zA-Z0-9._-]{1,50}|[a-zA-Z0-9_-]{1,50})$/"
+              ]
+            }
+          }
+        }
+      },
+      "clients": {
+        "agent_tool": {
+          "name": "tubealfred_youtube_channel_get"
+        },
+        "cli": {
+          "command": "channel"
+        },
+        "n8n": {
+          "resource": "channel",
+          "operation": "get"
+        }
+      }
+    },
+    {
+      "id": "channel_about",
+      "method": "GET",
+      "path": "/v1/youtube/channel/{channel_id}/about",
+      "summary": "Channel about",
+      "description": "Fetch YouTube channel about details through TubeAlfred.",
+      "credit_cost": "1 credit per call",
+      "deprecated": false,
+      "parameters": [
+        {
+          "name": "fields",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "type": "string",
+            "example": "id,title"
+          },
+          "description": "Comma-separated response fields to include."
+        },
+        {
+          "name": "channel_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "example": "UC... or @handle"
+          },
+          "description": "Use a channel ID, @handle, or username."
+        }
+      ],
+      "mcp": {
+        "name": "youtube_channel_about",
+        "title": "Get Channel About",
+        "public": true
+      },
+      "platform": {
+        "class_basename": "GetChannelAboutTool",
+        "documented_endpoint_keys": [
+          "channel_about"
+        ],
+        "endpoint": {
+          "order": 8,
+          "label": "Channel about",
+          "summary": "Channel about section.",
+          "description": "Country, join date, total views, and channel links when available.",
+          "insight_identifiers": {
+            "channel_id": "channel_id"
+          },
+          "parameters": {
+            "fields": {
+              "label": "Fields",
+              "placeholder": "id,title",
+              "helper_text": "Comma-separated response fields to include."
+            },
+            "channel_id": {
+              "label": "Channel ID / handle",
+              "placeholder": "UC... or @handle",
+              "helper_text": "Use a channel ID, @handle, or username.",
+              "rules": [
+                "min:1",
+                "max:100",
+                "regex:/^(UC[a-zA-Z0-9_-]{22}|@[a-zA-Z0-9._-]{1,50}|[a-zA-Z0-9_-]{1,50})$/"
+              ]
+            }
+          }
+        }
+      },
+      "clients": {
+        "agent_tool": {
+          "name": "tubealfred_youtube_channel_about"
+        },
+        "cli": {
+          "command": "channel-about"
+        },
+        "n8n": {
+          "resource": "channel",
+          "operation": "getAbout"
+        }
+      }
+    },
+    {
+      "id": "channel_videos",
+      "method": "GET",
+      "path": "/v1/youtube/channel/{channel_id}/videos",
+      "summary": "Channel videos",
+      "description": "Fetch recent YouTube videos for a channel through TubeAlfred.",
+      "credit_cost": "1 credit per call",
+      "deprecated": false,
+      "parameters": [
+        {
+          "name": "continuation_token",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "type": "string",
+            "example": "Optional pagination token"
+          },
+          "description": "Leave blank for the first page."
+        },
+        {
+          "name": "channel_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "example": "UC... or @handle"
+          },
+          "description": "Use a channel ID, @handle, or username."
+        }
+      ],
+      "mcp": {
+        "name": "youtube_channel_videos",
+        "title": "Get Channel Videos",
+        "public": true
+      },
+      "platform": {
+        "class_basename": "GetChannelVideosTool",
+        "documented_endpoint_keys": [
+          "channel_videos"
+        ],
+        "endpoint": {
+          "order": 2,
+          "label": "Channel videos",
+          "summary": "Latest videos for a channel.",
+          "description": "Supports continuation_token pagination.",
+          "insight_identifiers": {
+            "channel_id": "channel_id"
+          },
+          "parameters": {
+            "continuation_token": {
+              "label": "Continuation token",
+              "placeholder": "Optional pagination token",
+              "helper_text": "Leave blank for the first page.",
+              "rules": [
+                "min:1",
+                "max:50000"
+              ]
+            },
+            "channel_id": {
+              "label": "Channel ID / handle",
+              "placeholder": "UC... or @handle",
+              "helper_text": "Use a channel ID, @handle, or username.",
+              "rules": [
+                "min:1",
+                "max:100",
+                "regex:/^(UC[a-zA-Z0-9_-]{22}|@[a-zA-Z0-9._-]{1,50}|[a-zA-Z0-9_-]{1,50})$/"
+              ]
+            }
+          }
+        }
+      },
+      "clients": {
+        "agent_tool": {
+          "name": "tubealfred_youtube_channel_videos"
+        },
+        "cli": {
+          "command": "channel-videos"
+        },
+        "n8n": {
+          "resource": "channel",
+          "operation": "getVideos"
+        }
+      }
+    },
+    {
+      "id": "channel_videos_page",
+      "method": "POST",
+      "path": "/v1/youtube/channel/{channel_id}/videos/page",
+      "summary": "Channel videos page",
+      "description": "Fetch a paginated channel videos page through TubeAlfred.",
+      "credit_cost": "1 credit per call",
+      "deprecated": false,
+      "parameters": [
+        {
+          "name": "channel_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "example": "UC... or @handle"
+          },
+          "description": "Use a channel ID, @handle, or username."
+        },
+        {
+          "name": "continuation_token",
+          "in": "body",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "description": "Pagination continuation token.",
+            "example": "Token from previous response"
+          },
+          "description": "Pagination continuation token."
+        }
+      ],
+      "mcp": {
+        "name": "youtube_channel_videos_page",
+        "title": "Get Channel Videos Page",
+        "public": true
+      },
+      "platform": {
+        "class_basename": "GetChannelVideosPageTool",
+        "documented_endpoint_keys": [
+          "channel_videos_page"
+        ],
+        "endpoint": {
+          "order": 3,
+          "label": "Channel videos page",
+          "summary": "Next videos page for a channel.",
+          "description": "Fetches subsequent channel video pages using a continuation token.",
+          "insight_identifiers": {
+            "channel_id": "channel_id"
+          },
+          "parameters": {
+            "channel_id": {
+              "label": "Channel ID / handle",
+              "placeholder": "UC... or @handle",
+              "helper_text": "Use a channel ID, @handle, or username.",
+              "rules": [
+                "min:1",
+                "max:100",
+                "regex:/^(UC[a-zA-Z0-9_-]{22}|@[a-zA-Z0-9._-]{1,50}|[a-zA-Z0-9_-]{1,50})$/"
+              ]
+            },
+            "continuation_token": {
+              "label": "Continuation token",
+              "placeholder": "Token from previous response",
+              "helper_text": "Pagination continuation token.",
+              "rules": [
+                "min:1",
+                "max:50000"
+              ]
+            }
+          }
+        }
+      },
+      "clients": {
+        "agent_tool": {
+          "name": "tubealfred_youtube_channel_videos_page"
+        },
+        "cli": {
+          "command": "channel-videos-page"
+        },
+        "n8n": {
+          "resource": "channel",
+          "operation": "getVideosPage"
+        }
+      }
+    },
+    {
+      "id": "channel_streams",
+      "method": "GET",
+      "path": "/v1/youtube/channel/{channel_id}/streams",
+      "summary": "Channel live streams",
+      "description": "Fetch YouTube channel live streams through TubeAlfred.",
+      "credit_cost": "1 credit per call",
+      "deprecated": false,
+      "parameters": [
+        {
+          "name": "continuation_token",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "type": "string",
+            "example": "Optional pagination token"
+          },
+          "description": "Leave blank for the first page."
+        },
+        {
+          "name": "channel_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "example": "UC... or @handle"
+          },
+          "description": "Use a channel ID, @handle, or username."
+        }
+      ],
+      "mcp": {
+        "name": "youtube_channel_streams",
+        "title": "Get Channel Streams",
+        "public": true
+      },
+      "platform": {
+        "class_basename": "GetChannelStreamsTool",
+        "documented_endpoint_keys": [
+          "channel_streams"
+        ],
+        "endpoint": {
+          "order": 4,
+          "label": "Channel live streams",
+          "summary": "Live streams for a channel.",
+          "description": "Supports continuation_token pagination.",
+          "insight_identifiers": {
+            "channel_id": "channel_id"
+          },
+          "parameters": {
+            "continuation_token": {
+              "label": "Continuation token",
+              "placeholder": "Optional pagination token",
+              "helper_text": "Leave blank for the first page.",
+              "rules": [
+                "min:1",
+                "max:50000"
+              ]
+            },
+            "channel_id": {
+              "label": "Channel ID / handle",
+              "placeholder": "UC... or @handle",
+              "helper_text": "Use a channel ID, @handle, or username.",
+              "rules": [
+                "min:1",
+                "max:100",
+                "regex:/^(UC[a-zA-Z0-9_-]{22}|@[a-zA-Z0-9._-]{1,50}|[a-zA-Z0-9_-]{1,50})$/"
+              ]
+            }
+          }
+        }
+      },
+      "clients": {
+        "agent_tool": {
+          "name": "tubealfred_youtube_channel_streams"
+        },
+        "cli": {
+          "command": "channel-streams"
+        },
+        "n8n": {
+          "resource": "channel",
+          "operation": "getStreams"
+        }
+      }
+    },
+    {
+      "id": "channel_streams_page",
+      "method": "POST",
+      "path": "/v1/youtube/channel/{channel_id}/streams/page",
+      "summary": "Channel live streams page",
+      "description": "Fetch a paginated channel live streams page through TubeAlfred.",
+      "credit_cost": "1 credit per call",
+      "deprecated": false,
+      "parameters": [
+        {
+          "name": "channel_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "example": "UC... or @handle"
+          },
+          "description": "Use a channel ID, @handle, or username."
+        },
+        {
+          "name": "continuation_token",
+          "in": "body",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "description": "Pagination continuation token.",
+            "example": "Token from previous response"
+          },
+          "description": "Pagination continuation token."
+        }
+      ],
+      "mcp": {
+        "name": "youtube_channel_streams_page",
+        "title": "Get Channel Streams Page",
+        "public": true
+      },
+      "platform": {
+        "class_basename": "GetChannelStreamsPageTool",
+        "documented_endpoint_keys": [
+          "channel_streams_page"
+        ],
+        "endpoint": {
+          "order": 5,
+          "label": "Channel live streams page",
+          "summary": "Next live streams page for a channel.",
+          "description": "Fetches subsequent live stream pages using a continuation token.",
+          "insight_identifiers": {
+            "channel_id": "channel_id"
+          },
+          "parameters": {
+            "channel_id": {
+              "label": "Channel ID / handle",
+              "placeholder": "UC... or @handle",
+              "helper_text": "Use a channel ID, @handle, or username.",
+              "rules": [
+                "min:1",
+                "max:100",
+                "regex:/^(UC[a-zA-Z0-9_-]{22}|@[a-zA-Z0-9._-]{1,50}|[a-zA-Z0-9_-]{1,50})$/"
+              ]
+            },
+            "continuation_token": {
+              "label": "Continuation token",
+              "placeholder": "Token from previous response",
+              "helper_text": "Pagination continuation token.",
+              "rules": [
+                "min:1",
+                "max:50000"
+              ]
+            }
+          }
+        }
+      },
+      "clients": {
+        "agent_tool": {
+          "name": "tubealfred_youtube_channel_streams_page"
+        },
+        "cli": {
+          "command": "channel-streams-page"
+        },
+        "n8n": {
+          "resource": "channel",
+          "operation": "getStreamsPage"
+        }
+      }
+    },
+    {
+      "id": "channel_shorts",
+      "method": "GET",
+      "path": "/v1/youtube/channel/{channel_id}/shorts",
+      "summary": "Channel shorts",
+      "description": "Fetch YouTube Shorts for a channel through TubeAlfred.",
+      "credit_cost": "1 credit per call",
+      "deprecated": false,
+      "parameters": [
+        {
+          "name": "continuation_token",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "type": "string",
+            "example": "Optional pagination token"
+          },
+          "description": "Leave blank for the first page."
+        },
+        {
+          "name": "channel_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "example": "UC... or @handle"
+          },
+          "description": "Use a channel ID, @handle, or username."
+        }
+      ],
+      "mcp": {
+        "name": "youtube_channel_shorts",
+        "title": "Get Channel Shorts",
+        "public": true
+      },
+      "platform": {
+        "class_basename": "GetChannelShortsTool",
+        "documented_endpoint_keys": [
+          "channel_shorts"
+        ],
+        "endpoint": {
+          "order": 6,
+          "label": "Channel shorts",
+          "summary": "Latest Shorts for a channel.",
+          "description": "Supports continuation_token pagination.",
+          "insight_identifiers": {
+            "channel_id": "channel_id"
+          },
+          "parameters": {
+            "continuation_token": {
+              "label": "Continuation token",
+              "placeholder": "Optional pagination token",
+              "helper_text": "Leave blank for the first page.",
+              "rules": [
+                "min:1",
+                "max:50000"
+              ]
+            },
+            "channel_id": {
+              "label": "Channel ID / handle",
+              "placeholder": "UC... or @handle",
+              "helper_text": "Use a channel ID, @handle, or username.",
+              "rules": [
+                "min:1",
+                "max:100",
+                "regex:/^(UC[a-zA-Z0-9_-]{22}|@[a-zA-Z0-9._-]{1,50}|[a-zA-Z0-9_-]{1,50})$/"
+              ]
+            }
+          }
+        }
+      },
+      "clients": {
+        "agent_tool": {
+          "name": "tubealfred_youtube_channel_shorts"
+        },
+        "cli": {
+          "command": "channel-shorts"
+        },
+        "n8n": {
+          "resource": "channel",
+          "operation": "getShorts"
+        }
+      }
+    },
+    {
+      "id": "channel_shorts_page",
+      "method": "POST",
+      "path": "/v1/youtube/channel/{channel_id}/shorts/page",
+      "summary": "Channel shorts page",
+      "description": "Fetch a paginated channel Shorts page through TubeAlfred.",
+      "credit_cost": "1 credit per call",
+      "deprecated": false,
+      "parameters": [
+        {
+          "name": "channel_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "example": "UC... or @handle"
+          },
+          "description": "Use a channel ID, @handle, or username."
+        },
+        {
+          "name": "continuation_token",
+          "in": "body",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "description": "Pagination continuation token.",
+            "example": "Token from previous response"
+          },
+          "description": "Pagination continuation token."
+        }
+      ],
+      "mcp": {
+        "name": "youtube_channel_shorts_page",
+        "title": "Get Channel Shorts Page",
+        "public": true
+      },
+      "platform": {
+        "class_basename": "GetChannelShortsPageTool",
+        "documented_endpoint_keys": [
+          "channel_shorts_page"
+        ],
+        "endpoint": {
+          "order": 7,
+          "label": "Channel shorts page",
+          "summary": "Next Shorts page for a channel.",
+          "description": "Fetches subsequent Shorts pages using a continuation token.",
+          "insight_identifiers": {
+            "channel_id": "channel_id"
+          },
+          "parameters": {
+            "channel_id": {
+              "label": "Channel ID / handle",
+              "placeholder": "UC... or @handle",
+              "helper_text": "Use a channel ID, @handle, or username.",
+              "rules": [
+                "min:1",
+                "max:100",
+                "regex:/^(UC[a-zA-Z0-9_-]{22}|@[a-zA-Z0-9._-]{1,50}|[a-zA-Z0-9_-]{1,50})$/"
+              ]
+            },
+            "continuation_token": {
+              "label": "Continuation token",
+              "placeholder": "Token from previous response",
+              "helper_text": "Pagination continuation token.",
+              "rules": [
+                "min:1",
+                "max:50000"
+              ]
+            }
+          }
+        }
+      },
+      "clients": {
+        "agent_tool": {
+          "name": "tubealfred_youtube_channel_shorts_page"
+        },
+        "cli": {
+          "command": "channel-shorts-page"
+        },
+        "n8n": {
+          "resource": "channel",
+          "operation": "getShortsPage"
+        }
+      }
+    },
+    {
+      "id": "channel_playlists",
+      "method": "GET",
+      "path": "/v1/youtube/channel/{channel_id}/playlists",
+      "summary": "Channel playlists",
+      "description": "Fetch YouTube channel playlists through TubeAlfred.",
+      "credit_cost": "1 credit per call",
+      "deprecated": false,
+      "parameters": [
+        {
+          "name": "continuation_token",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "type": "string",
+            "example": "Optional pagination token"
+          },
+          "description": "Leave blank for the first page."
+        },
+        {
+          "name": "channel_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "example": "UC... or @handle"
+          },
+          "description": "Use a channel ID, @handle, or username."
+        }
+      ],
+      "mcp": {
+        "name": "youtube_channel_playlists",
+        "title": "Get Channel Playlists",
+        "public": true
+      },
+      "platform": {
+        "class_basename": "GetChannelPlaylistsTool",
+        "documented_endpoint_keys": [
+          "channel_playlists"
+        ],
+        "endpoint": {
+          "order": 9,
+          "label": "Channel playlists",
+          "summary": "Published playlists for a channel.",
+          "description": "Supports continuation_token pagination.",
+          "insight_identifiers": {
+            "channel_id": "channel_id"
+          },
+          "parameters": {
+            "continuation_token": {
+              "label": "Continuation token",
+              "placeholder": "Optional pagination token",
+              "helper_text": "Leave blank for the first page.",
+              "rules": [
+                "min:1",
+                "max:50000"
+              ]
+            },
+            "channel_id": {
+              "label": "Channel ID / handle",
+              "placeholder": "UC... or @handle",
+              "helper_text": "Use a channel ID, @handle, or username.",
+              "rules": [
+                "min:1",
+                "max:100",
+                "regex:/^(UC[a-zA-Z0-9_-]{22}|@[a-zA-Z0-9._-]{1,50}|[a-zA-Z0-9_-]{1,50})$/"
+              ]
+            }
+          }
+        }
+      },
+      "clients": {
+        "agent_tool": {
+          "name": "tubealfred_youtube_channel_playlists"
+        },
+        "cli": {
+          "command": "channel-playlists"
+        },
+        "n8n": {
+          "resource": "channel",
+          "operation": "getPlaylists"
+        }
+      }
+    },
+    {
+      "id": "channel_playlists_page",
+      "method": "POST",
+      "path": "/v1/youtube/channel/{channel_id}/playlists/page",
+      "summary": "Channel playlists page",
+      "description": "Fetch a paginated channel playlists page through TubeAlfred.",
+      "credit_cost": "1 credit per call",
+      "deprecated": false,
+      "parameters": [
+        {
+          "name": "channel_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "example": "UC... or @handle"
+          },
+          "description": "Use a channel ID, @handle, or username."
+        },
+        {
+          "name": "continuation_token",
+          "in": "body",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "description": "Pagination continuation token.",
+            "example": "Token from previous response"
+          },
+          "description": "Pagination continuation token."
+        }
+      ],
+      "mcp": {
+        "name": "youtube_channel_playlists_page",
+        "title": "Get Channel Playlists Page",
+        "public": true
+      },
+      "platform": {
+        "class_basename": "GetChannelPlaylistsPageTool",
+        "documented_endpoint_keys": [
+          "channel_playlists_page"
+        ],
+        "endpoint": {
+          "order": 10,
+          "label": "Channel playlists page",
+          "summary": "Next playlists page for a channel.",
+          "description": "Fetches subsequent playlist pages using a continuation token.",
+          "insight_identifiers": {
+            "channel_id": "channel_id"
+          },
+          "parameters": {
+            "channel_id": {
+              "label": "Channel ID / handle",
+              "placeholder": "UC... or @handle",
+              "helper_text": "Use a channel ID, @handle, or username.",
+              "rules": [
+                "min:1",
+                "max:100",
+                "regex:/^(UC[a-zA-Z0-9_-]{22}|@[a-zA-Z0-9._-]{1,50}|[a-zA-Z0-9_-]{1,50})$/"
+              ]
+            },
+            "continuation_token": {
+              "label": "Continuation token",
+              "placeholder": "Token from previous response",
+              "helper_text": "Pagination continuation token.",
+              "rules": [
+                "min:1",
+                "max:50000"
+              ]
+            }
+          }
+        }
+      },
+      "clients": {
+        "agent_tool": {
+          "name": "tubealfred_youtube_channel_playlists_page"
+        },
+        "cli": {
+          "command": "channel-playlists-page"
+        },
+        "n8n": {
+          "resource": "channel",
+          "operation": "getPlaylistsPage"
+        }
+      }
+    },
+    {
+      "id": "channel_community",
+      "method": "GET",
+      "path": "/v1/youtube/channel/{channel_id}/community",
+      "summary": "Channel community posts",
+      "description": "Fetch YouTube channel community posts through TubeAlfred.",
+      "credit_cost": "1 credit per call",
+      "deprecated": false,
+      "parameters": [
+        {
+          "name": "continuation_token",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "type": "string",
+            "example": "Optional pagination token"
+          },
+          "description": "Leave blank for the first page."
+        },
+        {
+          "name": "channel_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "example": "UC... or @handle"
+          },
+          "description": "Use a channel ID, @handle, or username."
+        }
+      ],
+      "mcp": {
+        "name": "youtube_channel_community",
+        "title": "Get Channel Community Posts",
+        "public": true
+      },
+      "platform": {
+        "class_basename": "GetChannelCommunityTool",
+        "documented_endpoint_keys": [
+          "channel_community"
+        ],
+        "endpoint": {
+          "order": 11,
+          "label": "Channel community posts",
+          "summary": "Community tab posts for a channel.",
+          "description": "Supports continuation_token pagination when the channel has a community tab.",
+          "insight_identifiers": {
+            "channel_id": "channel_id"
+          },
+          "parameters": {
+            "continuation_token": {
+              "label": "Continuation token",
+              "placeholder": "Optional pagination token",
+              "helper_text": "Leave blank for the first page.",
+              "rules": [
+                "min:1",
+                "max:50000"
+              ]
+            },
+            "channel_id": {
+              "label": "Channel ID / handle",
+              "placeholder": "UC... or @handle",
+              "helper_text": "Use a channel ID, @handle, or username.",
+              "rules": [
+                "min:1",
+                "max:100",
+                "regex:/^(UC[a-zA-Z0-9_-]{22}|@[a-zA-Z0-9._-]{1,50}|[a-zA-Z0-9_-]{1,50})$/"
+              ]
+            }
+          }
+        }
+      },
+      "clients": {
+        "agent_tool": {
+          "name": "tubealfred_youtube_channel_community"
+        },
+        "cli": {
+          "command": "channel-community"
+        },
+        "n8n": {
+          "resource": "channel",
+          "operation": "getCommunityPosts"
+        }
+      }
+    },
+    {
+      "id": "channel_community_page",
+      "method": "POST",
+      "path": "/v1/youtube/channel/{channel_id}/community/page",
+      "summary": "Channel community posts page",
+      "description": "Fetch a paginated channel community posts page through TubeAlfred.",
+      "credit_cost": "1 credit per call",
+      "deprecated": false,
+      "parameters": [
+        {
+          "name": "channel_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "example": "UC... or @handle"
+          },
+          "description": "Use a channel ID, @handle, or username."
+        },
+        {
+          "name": "continuation_token",
+          "in": "body",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "description": "Pagination continuation token.",
+            "example": "Token from previous response"
+          },
+          "description": "Pagination continuation token."
+        }
+      ],
+      "mcp": {
+        "name": "youtube_channel_community_page",
+        "title": "Get Channel Community Posts Page",
+        "public": true
+      },
+      "platform": {
+        "class_basename": "GetChannelCommunityPageTool",
+        "documented_endpoint_keys": [
+          "channel_community_page"
+        ],
+        "endpoint": {
+          "order": 12,
+          "label": "Channel community posts page",
+          "summary": "Next community posts page for a channel.",
+          "description": "Fetches subsequent community pages using a continuation token.",
+          "insight_identifiers": {
+            "channel_id": "channel_id"
+          },
+          "parameters": {
+            "channel_id": {
+              "label": "Channel ID / handle",
+              "placeholder": "UC... or @handle",
+              "helper_text": "Use a channel ID, @handle, or username.",
+              "rules": [
+                "min:1",
+                "max:100",
+                "regex:/^(UC[a-zA-Z0-9_-]{22}|@[a-zA-Z0-9._-]{1,50}|[a-zA-Z0-9_-]{1,50})$/"
+              ]
+            },
+            "continuation_token": {
+              "label": "Continuation token",
+              "placeholder": "Token from previous response",
+              "helper_text": "Pagination continuation token.",
+              "rules": [
+                "min:1",
+                "max:50000"
+              ]
+            }
+          }
+        }
+      },
+      "clients": {
+        "agent_tool": {
+          "name": "tubealfred_youtube_channel_community_page"
+        },
+        "cli": {
+          "command": "channel-community-page"
+        },
+        "n8n": {
+          "resource": "channel",
+          "operation": "getCommunityPostsPage"
+        }
+      }
+    },
+    {
+      "id": "playlist_metadata",
+      "method": "GET",
+      "path": "/v1/youtube/playlist/{playlist_id}/metadata",
+      "summary": "Playlist metadata",
+      "description": "Fetch YouTube playlist metadata through TubeAlfred.",
+      "credit_cost": "1 credit per call",
+      "deprecated": false,
+      "parameters": [
+        {
+          "name": "playlist_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "example": "PL..."
+          },
+          "description": "Use a YouTube playlist ID."
+        }
+      ],
+      "mcp": {
+        "name": "youtube_playlist_metadata",
+        "title": "Get Playlist Metadata",
+        "public": true
+      },
+      "platform": {
+        "class_basename": "GetPlaylistMetadataTool",
+        "documented_endpoint_keys": [
+          "playlist_metadata"
+        ],
+        "endpoint": {
+          "order": 28,
+          "label": "Playlist metadata",
+          "summary": "Playlist metadata.",
+          "description": "Returns playlist title, description, thumbnail, counts, and author details.",
+          "insight_identifiers": {
+            "playlist_id": "playlist_id"
+          },
+          "parameters": {
+            "playlist_id": {
+              "label": "Playlist ID",
+              "placeholder": "PL...",
+              "helper_text": "Use a YouTube playlist ID."
+            }
+          }
+        }
+      },
+      "clients": {
+        "agent_tool": {
+          "name": "tubealfred_youtube_playlist_metadata"
+        },
+        "cli": {
+          "command": "playlist-metadata"
+        },
+        "n8n": {
+          "resource": "playlist",
+          "operation": "getMetadata"
+        }
+      }
+    },
+    {
+      "id": "playlist_contents",
+      "method": "GET",
+      "path": "/v1/youtube/playlist/{playlist_id}",
+      "summary": "Playlist contents",
+      "description": "Fetch YouTube playlist contents through TubeAlfred.",
+      "credit_cost": "1 credit per call",
+      "deprecated": false,
+      "parameters": [
+        {
+          "name": "continuation_token",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "type": "string",
+            "example": "Optional pagination token"
+          },
+          "description": "Leave blank for the first page."
+        },
+        {
+          "name": "playlist_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "example": "PL..."
+          },
+          "description": "Use a YouTube playlist ID."
+        }
+      ],
+      "mcp": {
+        "name": "youtube_playlist_get",
+        "title": "Get Playlist",
+        "public": true
+      },
+      "platform": {
+        "class_basename": "GetPlaylistTool",
+        "documented_endpoint_keys": [
+          "playlist_contents"
+        ],
+        "endpoint": {
+          "order": 29,
+          "label": "Playlist contents",
+          "summary": "Playlist contents.",
+          "description": "Returns playlist videos with optional continuation token.",
+          "insight_identifiers": {
+            "playlist_id": "playlist_id"
+          },
+          "parameters": {
+            "continuation_token": {
+              "label": "Continuation token",
+              "placeholder": "Optional pagination token",
+              "helper_text": "Leave blank for the first page.",
+              "rules": [
+                "min:1",
+                "max:50000"
+              ]
+            },
+            "playlist_id": {
+              "label": "Playlist ID",
+              "placeholder": "PL...",
+              "helper_text": "Use a YouTube playlist ID."
+            }
+          }
+        }
+      },
+      "clients": {
+        "agent_tool": {
+          "name": "tubealfred_youtube_playlist_get"
+        },
+        "cli": {
+          "command": "playlist"
+        },
+        "n8n": {
+          "resource": "playlist",
+          "operation": "get"
+        }
+      }
+    },
+    {
+      "id": "playlist_page",
+      "method": "POST",
+      "path": "/v1/youtube/playlist/{playlist_id}/page",
+      "summary": "Playlist page",
+      "description": "Fetch a paginated YouTube playlist contents page through TubeAlfred.",
+      "credit_cost": "1 credit per call",
+      "deprecated": false,
+      "parameters": [
+        {
+          "name": "playlist_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "example": "PL..."
+          },
+          "description": "Use a YouTube playlist ID."
+        },
+        {
+          "name": "continuation_token",
+          "in": "body",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "description": "Pagination continuation token.",
+            "example": "Token from previous response"
+          },
+          "description": "Pagination continuation token."
+        }
+      ],
+      "mcp": {
+        "name": "youtube_playlist_page",
+        "title": "Get Playlist Page",
+        "public": true
+      },
+      "platform": {
+        "class_basename": "GetPlaylistPageTool",
+        "documented_endpoint_keys": [
+          "playlist_page"
+        ],
+        "endpoint": {
+          "order": 30,
+          "label": "Playlist page",
+          "summary": "Next page of playlist contents.",
+          "description": "Fetches subsequent playlist video pages using a continuation token.",
+          "insight_identifiers": {
+            "playlist_id": "playlist_id"
+          },
+          "parameters": {
+            "playlist_id": {
+              "label": "Playlist ID",
+              "placeholder": "PL...",
+              "helper_text": "Use a YouTube playlist ID."
+            },
+            "continuation_token": {
+              "label": "Continuation token",
+              "placeholder": "Token from previous response",
+              "helper_text": "Pagination continuation token.",
+              "rules": [
+                "min:1",
+                "max:50000"
+              ]
+            }
+          }
+        }
+      },
+      "clients": {
+        "agent_tool": {
+          "name": "tubealfred_youtube_playlist_page"
+        },
+        "cli": {
+          "command": "playlist-page"
+        },
+        "n8n": {
+          "resource": "playlist",
+          "operation": "getPage"
+        }
+      }
+    },
+    {
+      "id": "search_suggestions",
+      "method": "GET",
+      "path": "/v1/youtube/search/suggestions",
+      "summary": "Search suggestions",
+      "description": "Fetch YouTube search autocomplete suggestions through TubeAlfred.",
+      "credit_cost": "1 credit per call",
+      "deprecated": false,
+      "parameters": [
+        {
+          "name": "q",
+          "in": "query",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "example": "how to"
+          },
+          "description": "At least 2 characters."
+        },
+        {
+          "name": "prev",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "type": "string",
+            "example": "Optional previous query"
+          },
+          "description": "Optional previous query context."
+        }
+      ],
+      "mcp": {
+        "name": "youtube_search_suggest",
+        "title": "Get Search Suggestions",
+        "public": true
+      },
+      "platform": {
+        "class_basename": "GetSearchSuggestionsTool",
+        "documented_endpoint_keys": [
+          "search_suggestions"
+        ],
+        "endpoint": {
+          "order": 25,
+          "label": "Search suggestions",
+          "summary": "Autocomplete suggestions.",
+          "description": "Suggestion endpoint used to build search assistance.",
+          "insight_identifiers": {
+            "search_query": "q"
+          },
+          "parameters": {
+            "q": {
+              "label": "Query",
+              "placeholder": "how to",
+              "helper_text": "At least 2 characters."
+            },
+            "prev": {
+              "label": "Previous query",
+              "placeholder": "Optional previous query",
+              "helper_text": "Optional previous query context."
+            }
+          }
+        }
+      },
+      "clients": {
+        "agent_tool": {
+          "name": "tubealfred_youtube_search_suggest"
+        },
+        "cli": {
+          "command": "suggestions"
+        },
+        "n8n": {
+          "resource": "search",
+          "operation": "getSuggestions"
+        }
+      }
+    },
+    {
+      "id": "search_hashtag",
+      "method": "GET",
+      "path": "/v1/youtube/search/hashtag",
+      "summary": "Hashtag search",
+      "description": "Search YouTube by hashtag through TubeAlfred.",
+      "credit_cost": "1 credit per call",
+      "deprecated": false,
+      "parameters": [
+        {
+          "name": "hashtag",
+          "in": "query",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "example": "#music"
+          },
+          "description": "Use a hashtag with or without the # prefix."
+        },
+        {
+          "name": "continuation_token",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "type": "string",
+            "example": "Optional pagination token"
+          },
+          "description": "Leave blank for the first page."
+        }
+      ],
+      "mcp": {
+        "name": "youtube_search_hashtag",
+        "title": "Search YouTube Hashtag",
+        "public": true
+      },
+      "platform": {
+        "class_basename": "SearchYoutubeHashtagTool",
+        "documented_endpoint_keys": [
+          "search_hashtag"
+        ],
+        "endpoint": {
+          "order": 26,
+          "label": "Hashtag search",
+          "summary": "Search YouTube by hashtag.",
+          "description": "Supports continuation_token pagination.",
+          "insight_identifiers": {
+            "search_query": "hashtag"
+          },
+          "parameters": {
+            "hashtag": {
+              "label": "Hashtag",
+              "placeholder": "#music",
+              "helper_text": "Use a hashtag with or without the # prefix.",
+              "rules": [
+                "min:1",
+                "max:100",
+                "regex:/^#?[a-zA-Z0-9_]+$/"
+              ]
+            },
+            "continuation_token": {
+              "label": "Continuation token",
+              "placeholder": "Optional pagination token",
+              "helper_text": "Leave blank for the first page.",
+              "rules": [
+                "min:1",
+                "max:50000"
+              ]
+            }
+          }
+        }
+      },
+      "clients": {
+        "agent_tool": {
+          "name": "tubealfred_youtube_search_hashtag"
+        },
+        "cli": {
+          "command": "hashtag"
+        },
+        "n8n": {
+          "resource": "search",
+          "operation": "searchHashtag"
+        }
+      }
+    },
+    {
+      "id": "search_hashtag_page",
+      "method": "POST",
+      "path": "/v1/youtube/search/hashtag/page",
+      "summary": "Hashtag search page",
+      "description": "Fetch a paginated YouTube hashtag search page through TubeAlfred.",
+      "credit_cost": "1 credit per call",
+      "deprecated": false,
+      "parameters": [
+        {
+          "name": "hashtag",
+          "in": "body",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "description": "Use a hashtag with or without the # prefix.",
+            "example": "#music"
+          },
+          "description": "Use a hashtag with or without the # prefix."
+        },
+        {
+          "name": "continuation_token",
+          "in": "body",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "description": "Pagination continuation token.",
+            "example": "Token from previous response"
+          },
+          "description": "Pagination continuation token."
+        }
+      ],
+      "mcp": {
+        "name": "youtube_search_hashtag_page",
+        "title": "Search YouTube Hashtag Page",
+        "public": true
+      },
+      "platform": {
+        "class_basename": "SearchYoutubeHashtagPageTool",
+        "documented_endpoint_keys": [
+          "search_hashtag_page"
+        ],
+        "endpoint": {
+          "order": 27,
+          "label": "Hashtag search page",
+          "summary": "Next page of hashtag search results.",
+          "description": "Fetches subsequent hashtag pages using a continuation token.",
+          "insight_identifiers": {
+            "search_query": "hashtag"
+          },
+          "parameters": {
+            "hashtag": {
+              "label": "Hashtag",
+              "placeholder": "#music",
+              "helper_text": "Use a hashtag with or without the # prefix.",
+              "rules": [
+                "min:1",
+                "max:100",
+                "regex:/^#?[a-zA-Z0-9_]+$/"
+              ]
+            },
+            "continuation_token": {
+              "label": "Continuation token",
+              "placeholder": "Token from previous response",
+              "helper_text": "Pagination continuation token.",
+              "rules": [
+                "min:1",
+                "max:50000"
+              ]
+            }
+          }
+        }
+      },
+      "clients": {
+        "agent_tool": {
+          "name": "tubealfred_youtube_search_hashtag_page"
+        },
+        "cli": {
+          "command": "hashtag-page"
+        },
+        "n8n": {
+          "resource": "search",
+          "operation": "searchHashtagPage"
+        }
+      }
+    },
+    {
+      "id": "search_page",
+      "method": "POST",
+      "path": "/v1/youtube/search/page",
+      "summary": "Search page",
+      "description": "Fetch a paginated YouTube search results page through TubeAlfred.",
+      "credit_cost": "1 credit per call",
+      "deprecated": false,
+      "parameters": [
+        {
+          "name": "query",
+          "in": "body",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "description": "Search query string.",
+            "example": "how to learn faster"
+          },
+          "description": "Search query string."
+        },
+        {
+          "name": "continuation_token",
+          "in": "body",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "description": "Pagination continuation token.",
+            "example": "Token from previous response"
+          },
+          "description": "Pagination continuation token."
+        },
+        {
+          "name": "channel_id",
+          "in": "body",
+          "required": false,
+          "schema": {
+            "type": "string",
+            "description": "Restrict search results to a single channel ID, handle, or username.",
+            "example": "UC... or @handle"
+          },
+          "description": "Restrict search results to a single channel ID, handle, or username."
+        },
+        {
+          "name": "upload_date",
+          "in": "body",
+          "required": false,
+          "schema": {
+            "type": "string",
+            "description": "Filter by upload date. One of: all, today, week, month, year.",
+            "example": "month",
+            "enum": [
+              "all",
+              "today",
+              "week",
+              "month",
+              "year"
+            ]
+          },
+          "description": "Filter by upload date. One of: all, today, week, month, year."
+        },
+        {
+          "name": "duration",
+          "in": "body",
+          "required": false,
+          "schema": {
+            "type": "string",
+            "description": "Filter by video duration. One of: all, under_three_mins, three_to_twenty_mins, over_twenty_mins.",
+            "example": "three_to_twenty_mins",
+            "enum": [
+              "all",
+              "under_three_mins",
+              "three_to_twenty_mins",
+              "over_twenty_mins"
+            ]
+          },
+          "description": "Filter by video duration. One of: all, under_three_mins, three_to_twenty_mins, over_twenty_mins."
+        },
+        {
+          "name": "sort",
+          "in": "body",
+          "required": false,
+          "schema": {
+            "type": "string",
+            "description": "Search ranking preference. One of: relevance, popularity.",
+            "example": "relevance",
+            "enum": [
+              "relevance",
+              "popularity"
+            ]
+          },
+          "description": "Search ranking preference. One of: relevance, popularity."
+        },
+        {
+          "name": "type",
+          "in": "body",
+          "required": false,
+          "schema": {
+            "type": "string",
+            "description": "Restrict result type. One of: all, video, shorts, channel, playlist, movie.",
+            "example": "video",
+            "enum": [
+              "all",
+              "video",
+              "shorts",
+              "channel",
+              "playlist",
+              "movie"
+            ]
+          },
+          "description": "Restrict result type. One of: all, video, shorts, channel, playlist, movie."
+        },
+        {
+          "name": "features",
+          "in": "body",
+          "required": false,
+          "schema": {
+            "type": "string",
+            "description": "Comma-separated feature filters: hd, subtitles, creative_commons, 3d, live, purchased, 4k, 360, location, hdr, vr180.",
+            "example": "hd,subtitles"
+          },
+          "description": "Comma-separated feature filters: hd, subtitles, creative_commons, 3d, live, purchased, 4k, 360, location, hdr, vr180."
+        },
+        {
+          "name": "live",
+          "in": "body",
+          "required": false,
+          "schema": {
+            "type": "boolean",
+            "description": "Shortcut for features=live.",
+            "example": "true"
+          },
+          "description": "Shortcut for features=live."
+        },
+        {
+          "name": "shorts",
+          "in": "body",
+          "required": false,
+          "schema": {
+            "type": "boolean",
+            "description": "Shortcut for type=shorts.",
+            "example": "true"
+          },
+          "description": "Shortcut for type=shorts."
+        }
+      ],
+      "mcp": {
+        "name": "youtube_search_page",
+        "title": "Search YouTube Page",
+        "public": true
+      },
+      "platform": {
+        "class_basename": "SearchYoutubePageTool",
+        "documented_endpoint_keys": [
+          "search_page"
+        ],
+        "endpoint": {
+          "order": 24,
+          "label": "Search page",
+          "summary": "Next page of YouTube search results.",
+          "description": "Fetches subsequent search pages using a continuation token.",
+          "insight_identifiers": {
+            "search_query": "query"
+          },
+          "parameters": {
+            "query": {
+              "label": "Query",
+              "placeholder": "how to learn faster",
+              "helper_text": "Search query string."
+            },
+            "continuation_token": {
+              "label": "Continuation token",
+              "placeholder": "Token from previous response",
+              "helper_text": "Pagination continuation token.",
+              "rules": [
+                "min:1",
+                "max:50000"
+              ]
+            },
+            "channel_id": {
+              "label": "Channel ID / handle",
+              "placeholder": "UC... or @handle",
+              "helper_text": "Restrict search results to a single channel ID, handle, or username.",
+              "rules": [
+                "min:1",
+                "max:100",
+                "regex:/^(UC[a-zA-Z0-9_-]{22}|@[a-zA-Z0-9._-]{1,50}|[a-zA-Z0-9_-]{1,50})$/"
+              ]
+            },
+            "upload_date": {
+              "label": "Upload date",
+              "placeholder": "month",
+              "helper_text": "Filter by upload date. One of: all, today, week, month, year."
+            },
+            "duration": {
+              "label": "Duration",
+              "placeholder": "three_to_twenty_mins",
+              "helper_text": "Filter by video duration. One of: all, under_three_mins, three_to_twenty_mins, over_twenty_mins."
+            },
+            "sort": {
+              "label": "Sort",
+              "placeholder": "relevance",
+              "helper_text": "Search ranking preference. One of: relevance, popularity."
+            },
+            "type": {
+              "label": "Result type",
+              "placeholder": "video",
+              "helper_text": "Restrict result type. One of: all, video, shorts, channel, playlist, movie."
+            },
+            "features": {
+              "label": "Features",
+              "placeholder": "hd,subtitles",
+              "helper_text": "Comma-separated feature filters: hd, subtitles, creative_commons, 3d, live, purchased, 4k, 360, location, hdr, vr180.",
+              "rules": [
+                "regex:/^(hd|subtitles|creative_commons|3d|live|purchased|4k|360|location|hdr|vr180)(,(hd|subtitles|creative_commons|3d|live|purchased|4k|360|location|hdr|vr180))*$/"
+              ]
+            },
+            "live": {
+              "label": "Live only",
+              "placeholder": "true",
+              "helper_text": "Shortcut for features=live."
+            },
+            "shorts": {
+              "label": "Shorts only",
+              "placeholder": "true",
+              "helper_text": "Shortcut for type=shorts."
+            }
+          }
+        }
+      },
+      "clients": {
+        "agent_tool": {
+          "name": "tubealfred_youtube_search_page"
+        },
+        "cli": {
+          "command": "search-page"
+        },
+        "n8n": {
+          "resource": "search",
+          "operation": "searchPage"
+        }
+      }
+    },
+    {
+      "id": "trending",
+      "method": "GET",
+      "path": "/v1/youtube/trending",
+      "summary": "Trending videos",
+      "description": "Fetch trending YouTube videos through TubeAlfred.",
+      "credit_cost": "1 credit per call",
+      "deprecated": false,
+      "parameters": [],
+      "mcp": {
+        "name": "youtube_trending",
+        "title": "Get Trending Videos",
+        "public": true
+      },
+      "platform": {
+        "class_basename": "GetTrendingVideosTool",
+        "documented_endpoint_keys": [
+          "trending"
+        ],
+        "endpoint": {
+          "order": 34,
+          "label": "Trending videos",
+          "summary": "Trending videos.",
+          "description": "Returns currently trending YouTube videos.",
+          "insight_identifiers": [],
+          "parameters": []
+        }
+      },
+      "clients": {
+        "agent_tool": {
+          "name": "tubealfred_youtube_trending"
+        },
+        "cli": {
+          "command": "trending"
+        },
+        "n8n": {
+          "resource": "trend",
+          "operation": "getVideos"
+        }
+      }
+    },
+    {
+      "id": "trending_shorts",
+      "method": "GET",
+      "path": "/v1/youtube/trending/shorts",
+      "summary": "Trending Shorts",
+      "description": "Fetch trending YouTube Shorts through TubeAlfred.",
+      "credit_cost": "1 credit per call",
+      "deprecated": false,
+      "parameters": [],
+      "mcp": {
+        "name": "youtube_trending_shorts",
+        "title": "Get Trending Shorts",
+        "public": true
+      },
+      "platform": {
+        "class_basename": "GetTrendingShortsTool",
+        "documented_endpoint_keys": [
+          "trending_shorts"
+        ],
+        "endpoint": {
+          "order": 35,
+          "label": "Trending Shorts",
+          "summary": "Trending Shorts.",
+          "description": "Returns currently trending YouTube Shorts.",
+          "insight_identifiers": [],
+          "parameters": []
+        }
+      },
+      "clients": {
+        "agent_tool": {
+          "name": "tubealfred_youtube_trending_shorts"
+        },
+        "cli": {
+          "command": "trending-shorts"
+        },
+        "n8n": {
+          "resource": "trend",
+          "operation": "getShorts"
+        }
+      }
+    },
+    {
+      "id": "video_details",
+      "method": "GET",
+      "path": "/v1/youtube/video/{video_id}",
+      "summary": "Video details",
+      "description": "Fetch YouTube video details through TubeAlfred.",
+      "credit_cost": "1 credit per call",
+      "deprecated": false,
+      "parameters": [
+        {
+          "name": "fields",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "type": "string",
+            "example": "id,title"
+          },
+          "description": "Comma-separated response fields to include."
+        },
+        {
+          "name": "video_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "example": "11 character video ID"
+          },
+          "description": "Use the 11 character YouTube video ID."
+        }
+      ],
+      "mcp": {
+        "name": "youtube_video_get",
+        "title": "Get Video",
+        "public": true
+      },
+      "platform": {
+        "class_basename": "GetVideoTool",
+        "documented_endpoint_keys": [
+          "video_details"
+        ],
+        "endpoint": {
+          "order": 13,
+          "label": "Video details",
+          "summary": "Title, views, likes, comments, and duration.",
+          "description": "Video details including counts, publish date, channel info, duration, keywords, and transcript.",
+          "insight_identifiers": {
+            "video_id": "video_id"
+          },
+          "parameters": {
+            "fields": {
+              "label": "Fields",
+              "placeholder": "id,title",
+              "helper_text": "Comma-separated response fields to include."
+            },
+            "video_id": {
+              "label": "Video ID",
+              "placeholder": "11 character video ID",
+              "helper_text": "Use the 11 character YouTube video ID.",
+              "rules": [
+                "size:11",
+                "regex:/^[a-zA-Z0-9_-]{11}$/"
+              ]
+            }
+          }
+        }
+      },
+      "clients": {
+        "agent_tool": {
+          "name": "tubealfred_youtube_video_get"
+        },
+        "cli": {
+          "command": "video"
+        },
+        "n8n": {
+          "resource": "video",
+          "operation": "get"
+        }
+      }
+    },
+    {
+      "id": "video_enhanced",
+      "method": "GET",
+      "path": "/v1/youtube/video/{video_id}/enhanced",
+      "summary": "Enhanced video details",
+      "description": "Fetch enhanced YouTube video details through TubeAlfred.",
+      "credit_cost": "1 credit per call",
+      "deprecated": false,
+      "parameters": [
+        {
+          "name": "fields",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "type": "string",
+            "example": "id,title"
+          },
+          "description": "Comma-separated response fields to include."
+        },
+        {
+          "name": "video_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "example": "11 character video ID"
+          },
+          "description": "Use the 11 character YouTube video ID."
+        }
+      ],
+      "mcp": {
+        "name": "youtube_video_enhanced",
+        "title": "Get Video Enhanced",
+        "public": true
+      },
+      "platform": {
+        "class_basename": "GetVideoEnhancedTool",
+        "documented_endpoint_keys": [
+          "video_enhanced"
+        ],
+        "endpoint": {
+          "order": 22,
+          "label": "Enhanced video details",
+          "summary": "Enhanced video details.",
+          "description": "Video details plus live/category/chapter/related-video data when available.",
+          "insight_identifiers": {
+            "video_id": "video_id"
+          },
+          "parameters": {
+            "fields": {
+              "label": "Fields",
+              "placeholder": "id,title",
+              "helper_text": "Comma-separated response fields to include."
+            },
+            "video_id": {
+              "label": "Video ID",
+              "placeholder": "11 character video ID",
+              "helper_text": "Use the 11 character YouTube video ID.",
+              "rules": [
+                "size:11",
+                "regex:/^[a-zA-Z0-9_-]{11}$/"
+              ]
+            }
+          }
+        }
+      },
+      "clients": {
+        "agent_tool": {
+          "name": "tubealfred_youtube_video_enhanced"
+        },
+        "cli": {
+          "command": "video-enhanced"
+        },
+        "n8n": {
+          "resource": "video",
+          "operation": "getEnhanced"
+        }
+      }
+    },
+    {
+      "id": "video_transcript",
+      "method": "GET",
+      "path": "/v1/youtube/video/{video_id}/transcript",
+      "summary": "Video transcript",
+      "description": "Deprecated compatibility alias. Use youtube_video_transcript for all new transcript requests.",
+      "credit_cost": "0 credits when captions are unavailable; otherwise 1 credit per call",
+      "deprecated": true,
+      "parameters": [
+        {
+          "name": "language",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "type": "string",
+            "example": "en"
+          },
+          "description": "Preferred caption language code, for example en, es, or en-US."
+        },
+        {
+          "name": "kind",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "type": "string",
+            "enum": [
+              "manual",
+              "auto",
+              "any"
+            ],
+            "example": "any"
+          },
+          "description": "Caption track kind preference. One of: manual, auto, any."
+        },
+        {
+          "name": "video_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "example": "11 character video ID"
+          },
+          "description": "Use the 11 character YouTube video ID."
+        }
+      ],
+      "mcp": {
+        "name": "youtube_video_transcript_full",
+        "title": "Get Video Transcript Full (Deprecated)",
+        "public": false
+      },
+      "platform": {
+        "class_basename": "GetVideoTranscriptFullTool",
+        "documented_endpoint_keys": [
+          "video_transcript"
+        ],
+        "endpoint": {
+          "order": 14,
+          "label": "Video transcript",
+          "summary": "Video transcript.",
+          "description": "Fetches transcript text, timed segments, language metadata, and available caption tracks.",
+          "insight_identifiers": {
+            "video_id": "video_id"
+          },
+          "parameters": {
+            "language": {
+              "label": "Language",
+              "placeholder": "en",
+              "helper_text": "Preferred caption language code, for example en, es, or en-US.",
+              "rules": [
+                "min:2",
+                "max:20",
+                "regex:/^[a-zA-Z]{2,3}(-[a-zA-Z0-9]{2,8})?$/"
+              ]
+            },
+            "kind": {
+              "label": "Caption kind",
+              "placeholder": "any",
+              "helper_text": "Caption track kind preference. One of: manual, auto, any."
+            },
+            "video_id": {
+              "label": "Video ID",
+              "placeholder": "11 character video ID",
+              "helper_text": "Use the 11 character YouTube video ID.",
+              "rules": [
+                "size:11",
+                "regex:/^[a-zA-Z0-9_-]{11}$/"
+              ]
+            }
+          }
+        }
+      },
+      "clients": {
+        "agent_tool": {
+          "name": "tubealfred_youtube_video_transcript_full"
+        },
+        "cli": {
+          "command": "transcript-full"
+        },
+        "n8n": {
+          "resource": "video",
+          "operation": "getTranscriptFull"
+        }
+      }
+    },
+    {
+      "id": "video_comments",
+      "method": "GET",
+      "path": "/v1/youtube/video/{video_id}/comments",
+      "summary": "Video comments",
+      "description": "Fetch the first YouTube comments page through TubeAlfred.",
+      "credit_cost": "0 credits when empty; otherwise 1 credit per 5 comments (100 comment minimum, ≥ 20 credits per call)",
+      "deprecated": false,
+      "parameters": [
+        {
+          "name": "count",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "type": "integer",
+            "example": "100",
+            "minimum": 1,
+            "maximum": 100
+          },
+          "description": "Number of comments to fetch per page."
+        },
+        {
+          "name": "sort",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "type": "string",
+            "enum": [
+              "top",
+              "newest"
+            ],
+            "example": "top"
+          },
+          "description": "Comment sort order. One of: top, newest."
+        },
+        {
+          "name": "video_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "example": "11 character video ID"
+          },
+          "description": "Use the 11 character YouTube video ID."
+        }
+      ],
+      "mcp": {
+        "name": "youtube_comments_list",
+        "title": "Get Video Comments",
+        "public": true
+      },
+      "platform": {
+        "class_basename": "GetVideoCommentsTool",
+        "documented_endpoint_keys": [
+          "video_comments"
+        ],
+        "endpoint": {
+          "order": 16,
+          "label": "Video comments",
+          "summary": "First comments page for a video.",
+          "description": "Returns the first page of comments and a continuation token when more pages are available.",
+          "insight_identifiers": {
+            "video_id": "video_id"
+          },
+          "parameters": {
+            "count": {
+              "label": "Count",
+              "placeholder": "100",
+              "helper_text": "Number of comments to fetch per page.",
+              "rules": [
+                "min:1",
+                "max:100"
+              ]
+            },
+            "sort": {
+              "label": "Sort",
+              "placeholder": "top",
+              "helper_text": "Comment sort order. One of: top, newest."
+            },
+            "video_id": {
+              "label": "Video ID",
+              "placeholder": "11 character video ID",
+              "helper_text": "Use the 11 character YouTube video ID.",
+              "rules": [
+                "size:11",
+                "regex:/^[a-zA-Z0-9_-]{11}$/"
+              ]
+            }
+          }
+        }
+      },
+      "clients": {
+        "agent_tool": {
+          "name": "tubealfred_youtube_comments_list"
+        },
+        "cli": {
+          "command": "comments"
+        },
+        "n8n": {
+          "resource": "comment",
+          "operation": "getMany"
+        }
+      }
+    },
+    {
+      "id": "video_comments_page",
+      "method": "POST",
+      "path": "/v1/youtube/video/{video_id}/comments/page",
+      "summary": "Video comments page",
+      "description": "Fetch a paginated YouTube comments page through TubeAlfred.",
+      "credit_cost": "0 credits when empty; otherwise 1 credit per 5 comments (100 comment minimum, ≥ 20 credits per call)",
+      "deprecated": false,
+      "parameters": [
+        {
+          "name": "video_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "example": "11 character video ID"
+          },
+          "description": "Use the 11 character YouTube video ID."
+        },
+        {
+          "name": "continuation_token",
+          "in": "body",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "description": "Pagination continuation token.",
+            "example": "Token from previous response"
+          },
+          "description": "Pagination continuation token."
+        },
+        {
+          "name": "count",
+          "in": "body",
+          "required": false,
+          "schema": {
+            "type": "integer",
+            "description": "Number of comments to fetch per page.",
+            "example": "100",
+            "minimum": 1,
+            "maximum": 100
+          },
+          "description": "Number of comments to fetch per page."
+        }
+      ],
+      "mcp": {
+        "name": "youtube_comments_page",
+        "title": "Get Video Comments Page",
+        "public": true
+      },
+      "platform": {
+        "class_basename": "GetVideoCommentsPageTool",
+        "documented_endpoint_keys": [
+          "video_comments_page"
+        ],
+        "endpoint": {
+          "order": 17,
+          "label": "Video comments page",
+          "summary": "Paginated comments for a video.",
+          "description": "Fetches subsequent comment pages using the continuation token returned by the first page.",
+          "insight_identifiers": {
+            "video_id": "video_id"
+          },
+          "parameters": {
+            "video_id": {
+              "label": "Video ID",
+              "placeholder": "11 character video ID",
+              "helper_text": "Use the 11 character YouTube video ID.",
+              "rules": [
+                "size:11",
+                "regex:/^[a-zA-Z0-9_-]{11}$/"
+              ]
+            },
+            "continuation_token": {
+              "label": "Continuation token",
+              "placeholder": "Token from previous response",
+              "helper_text": "Pagination continuation token.",
+              "rules": [
+                "min:1",
+                "max:50000"
+              ]
+            },
+            "count": {
+              "label": "Count",
+              "placeholder": "100",
+              "helper_text": "Number of comments to fetch per page.",
+              "rules": [
+                "min:1",
+                "max:100"
+              ]
+            }
+          }
+        }
+      },
+      "clients": {
+        "agent_tool": {
+          "name": "tubealfred_youtube_comments_page"
+        },
+        "cli": {
+          "command": "comments-page"
+        },
+        "n8n": {
+          "resource": "comment",
+          "operation": "getPage"
+        }
+      }
+    },
+    {
+      "id": "video_comment_replies",
+      "method": "GET",
+      "path": "/v1/youtube/video/{video_id}/comments/{comment_id}/replies",
+      "summary": "Comment replies",
+      "description": "Fetch the first YouTube comment replies page through TubeAlfred.",
+      "credit_cost": "0 credits when empty; otherwise 1 credit per 5 comments (100 comment minimum, ≥ 20 credits per call)",
+      "deprecated": false,
+      "parameters": [
+        {
+          "name": "count",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "type": "integer",
+            "example": "100",
+            "minimum": 1,
+            "maximum": 100
+          },
+          "description": "Number of comments to fetch per page."
+        },
+        {
+          "name": "sort",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "type": "string",
+            "enum": [
+              "top",
+              "newest"
+            ],
+            "example": "top"
+          },
+          "description": "Comment sort order. One of: top, newest."
+        },
+        {
+          "name": "video_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "example": "11 character video ID"
+          },
+          "description": "Use the 11 character YouTube video ID."
+        },
+        {
+          "name": "comment_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "example": "Top-level comment ID"
+          },
+          "description": "Use the parent YouTube comment ID returned by the comments endpoint."
+        }
+      ],
+      "mcp": {
+        "name": "youtube_replies_list",
+        "title": "Get Video Comment Replies",
+        "public": true
+      },
+      "platform": {
+        "class_basename": "GetVideoCommentRepliesTool",
+        "documented_endpoint_keys": [
+          "video_comment_replies"
+        ],
+        "endpoint": {
+          "order": 18,
+          "label": "Comment replies",
+          "summary": "First replies page for a top-level comment.",
+          "description": "Returns replies for one top-level comment and a continuation token when more replies are available.",
+          "insight_identifiers": {
+            "video_id": "video_id"
+          },
+          "parameters": {
+            "count": {
+              "label": "Count",
+              "placeholder": "100",
+              "helper_text": "Number of comments to fetch per page.",
+              "rules": [
+                "min:1",
+                "max:100"
+              ]
+            },
+            "sort": {
+              "label": "Sort",
+              "placeholder": "top",
+              "helper_text": "Comment sort order. One of: top, newest."
+            },
+            "video_id": {
+              "label": "Video ID",
+              "placeholder": "11 character video ID",
+              "helper_text": "Use the 11 character YouTube video ID.",
+              "rules": [
+                "size:11",
+                "regex:/^[a-zA-Z0-9_-]{11}$/"
+              ]
+            },
+            "comment_id": {
+              "label": "Comment ID",
+              "placeholder": "Top-level comment ID",
+              "helper_text": "Use the parent YouTube comment ID returned by the comments endpoint."
+            }
+          }
+        }
+      },
+      "clients": {
+        "agent_tool": {
+          "name": "tubealfred_youtube_replies_list"
+        },
+        "cli": {
+          "command": "replies"
+        },
+        "n8n": {
+          "resource": "reply",
+          "operation": "getMany"
+        }
+      }
+    },
+    {
+      "id": "video_comment_replies_page",
+      "method": "POST",
+      "path": "/v1/youtube/video/{video_id}/comments/{comment_id}/replies/page",
+      "summary": "Comment replies page",
+      "description": "Fetch a paginated YouTube comment replies page through TubeAlfred.",
+      "credit_cost": "0 credits when empty; otherwise 1 credit per 5 comments (100 comment minimum, ≥ 20 credits per call)",
+      "deprecated": false,
+      "parameters": [
+        {
+          "name": "video_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "example": "11 character video ID"
+          },
+          "description": "Use the 11 character YouTube video ID."
+        },
+        {
+          "name": "comment_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "example": "Top-level comment ID"
+          },
+          "description": "Use the parent YouTube comment ID returned by the comments endpoint."
+        },
+        {
+          "name": "continuation_token",
+          "in": "body",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "description": "Pagination continuation token.",
+            "example": "Token from previous response"
+          },
+          "description": "Pagination continuation token."
+        },
+        {
+          "name": "count",
+          "in": "body",
+          "required": false,
+          "schema": {
+            "type": "integer",
+            "description": "Number of comments to fetch per page.",
+            "example": "100",
+            "minimum": 1,
+            "maximum": 100
+          },
+          "description": "Number of comments to fetch per page."
+        }
+      ],
+      "mcp": {
+        "name": "youtube_replies_page",
+        "title": "Get Video Comment Replies Page",
+        "public": true
+      },
+      "platform": {
+        "class_basename": "GetVideoCommentRepliesPageTool",
+        "documented_endpoint_keys": [
+          "video_comment_replies_page"
+        ],
+        "endpoint": {
+          "order": 19,
+          "label": "Comment replies page",
+          "summary": "Paginated replies for a top-level comment.",
+          "description": "Fetches subsequent reply pages using the continuation token returned by the first replies page.",
+          "insight_identifiers": {
+            "video_id": "video_id"
+          },
+          "parameters": {
+            "video_id": {
+              "label": "Video ID",
+              "placeholder": "11 character video ID",
+              "helper_text": "Use the 11 character YouTube video ID.",
+              "rules": [
+                "size:11",
+                "regex:/^[a-zA-Z0-9_-]{11}$/"
+              ]
+            },
+            "comment_id": {
+              "label": "Comment ID",
+              "placeholder": "Top-level comment ID",
+              "helper_text": "Use the parent YouTube comment ID returned by the comments endpoint."
+            },
+            "continuation_token": {
+              "label": "Continuation token",
+              "placeholder": "Token from previous response",
+              "helper_text": "Pagination continuation token.",
+              "rules": [
+                "min:1",
+                "max:50000"
+              ]
+            },
+            "count": {
+              "label": "Count",
+              "placeholder": "100",
+              "helper_text": "Number of comments to fetch per page.",
+              "rules": [
+                "min:1",
+                "max:100"
+              ]
+            }
+          }
+        }
+      },
+      "clients": {
+        "agent_tool": {
+          "name": "tubealfred_youtube_replies_page"
+        },
+        "cli": {
+          "command": "replies-page"
+        },
+        "n8n": {
+          "resource": "reply",
+          "operation": "getPage"
+        }
+      }
+    },
+    {
+      "id": "video_related",
+      "method": "GET",
+      "path": "/v1/youtube/video/{video_id}/related",
+      "summary": "Related videos",
+      "description": "Fetch related YouTube videos through TubeAlfred.",
+      "credit_cost": "1 credit per call",
+      "deprecated": false,
+      "parameters": [
+        {
+          "name": "continuation_token",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "type": "string",
+            "example": "Optional pagination token"
+          },
+          "description": "Leave blank for the first page."
+        },
+        {
+          "name": "video_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "example": "11 character video ID"
+          },
+          "description": "Use the 11 character YouTube video ID."
+        }
+      ],
+      "mcp": {
+        "name": "youtube_related_videos",
+        "title": "Get Related Videos",
+        "public": true
+      },
+      "platform": {
+        "class_basename": "GetRelatedVideosTool",
+        "documented_endpoint_keys": [
+          "video_related"
+        ],
+        "endpoint": {
+          "order": 20,
+          "label": "Related videos",
+          "summary": "Related videos.",
+          "description": "Supports continuation_token pagination.",
+          "insight_identifiers": {
+            "video_id": "video_id"
+          },
+          "parameters": {
+            "continuation_token": {
+              "label": "Continuation token",
+              "placeholder": "Optional pagination token",
+              "helper_text": "Leave blank for the first page.",
+              "rules": [
+                "min:1",
+                "max:50000"
+              ]
+            },
+            "video_id": {
+              "label": "Video ID",
+              "placeholder": "11 character video ID",
+              "helper_text": "Use the 11 character YouTube video ID.",
+              "rules": [
+                "size:11",
+                "regex:/^[a-zA-Z0-9_-]{11}$/"
+              ]
+            }
+          }
+        }
+      },
+      "clients": {
+        "agent_tool": {
+          "name": "tubealfred_youtube_related_videos"
+        },
+        "cli": {
+          "command": "related"
+        },
+        "n8n": {
+          "resource": "video",
+          "operation": "getRelated"
+        }
+      }
+    },
+    {
+      "id": "video_related_page",
+      "method": "POST",
+      "path": "/v1/youtube/video/{video_id}/related/page",
+      "summary": "Related videos page",
+      "description": "Fetch a paginated related-videos page through TubeAlfred.",
+      "credit_cost": "1 credit per call",
+      "deprecated": false,
+      "parameters": [
+        {
+          "name": "video_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "example": "11 character video ID"
+          },
+          "description": "Use the 11 character YouTube video ID."
+        },
+        {
+          "name": "continuation_token",
+          "in": "body",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "description": "Pagination continuation token.",
+            "example": "Token from previous response"
+          },
+          "description": "Pagination continuation token."
+        }
+      ],
+      "mcp": {
+        "name": "youtube_related_videos_page",
+        "title": "Get Related Videos Page",
+        "public": true
+      },
+      "platform": {
+        "class_basename": "GetRelatedVideosPageTool",
+        "documented_endpoint_keys": [
+          "video_related_page"
+        ],
+        "endpoint": {
+          "order": 21,
+          "label": "Related videos page",
+          "summary": "Next related videos page.",
+          "description": "Fetches subsequent related video pages using a continuation token.",
+          "insight_identifiers": {
+            "video_id": "video_id"
+          },
+          "parameters": {
+            "video_id": {
+              "label": "Video ID",
+              "placeholder": "11 character video ID",
+              "helper_text": "Use the 11 character YouTube video ID.",
+              "rules": [
+                "size:11",
+                "regex:/^[a-zA-Z0-9_-]{11}$/"
+              ]
+            },
+            "continuation_token": {
+              "label": "Continuation token",
+              "placeholder": "Token from previous response",
+              "helper_text": "Pagination continuation token.",
+              "rules": [
+                "min:1",
+                "max:50000"
+              ]
+            }
+          }
+        }
+      },
+      "clients": {
+        "agent_tool": {
+          "name": "tubealfred_youtube_related_videos_page"
+        },
+        "cli": {
+          "command": "related-page"
+        },
+        "n8n": {
+          "resource": "video",
+          "operation": "getRelatedPage"
+        }
+      }
+    },
+    {
+      "id": "video_transcript_fast",
+      "method": "GET",
+      "path": "/v1/youtube/video/{video_id}/transcript/fast",
+      "summary": "Video transcript fast",
+      "description": "Fetch a YouTube video transcript through TubeAlfred.",
+      "credit_cost": "0 credits when captions are unavailable; otherwise 1 credit per call",
+      "deprecated": false,
+      "parameters": [
+        {
+          "name": "language",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "type": "string",
+            "example": "en"
+          },
+          "description": "Preferred caption language code, for example en, es, or en-US."
+        },
+        {
+          "name": "kind",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "type": "string",
+            "enum": [
+              "manual",
+              "auto",
+              "any"
+            ],
+            "example": "any"
+          },
+          "description": "Caption track kind preference. One of: manual, auto, any."
+        },
+        {
+          "name": "video_id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "example": "11 character video ID"
+          },
+          "description": "Use the 11 character YouTube video ID."
+        }
+      ],
+      "mcp": {
+        "name": "youtube_video_transcript",
+        "title": "Get Video Transcript",
+        "public": true
+      },
+      "platform": {
+        "class_basename": "GetVideoTranscriptTool",
+        "documented_endpoint_keys": [
+          "video_transcript_fast"
+        ],
+        "endpoint": {
+          "order": 15,
+          "label": "Video transcript fast",
+          "summary": "Optimized transcript fetch.",
+          "description": "Recommended transcript endpoint.",
+          "insight_identifiers": {
+            "video_id": "video_id"
+          },
+          "parameters": {
+            "language": {
+              "label": "Language",
+              "placeholder": "en",
+              "helper_text": "Preferred caption language code, for example en, es, or en-US.",
+              "rules": [
+                "min:2",
+                "max:20",
+                "regex:/^[a-zA-Z]{2,3}(-[a-zA-Z0-9]{2,8})?$/"
+              ]
+            },
+            "kind": {
+              "label": "Caption kind",
+              "placeholder": "any",
+              "helper_text": "Caption track kind preference. One of: manual, auto, any."
+            },
+            "video_id": {
+              "label": "Video ID",
+              "placeholder": "11 character video ID",
+              "helper_text": "Use the 11 character YouTube video ID.",
+              "rules": [
+                "size:11",
+                "regex:/^[a-zA-Z0-9_-]{11}$/"
+              ]
+            }
+          }
+        }
+      },
+      "clients": {
+        "agent_tool": {
+          "name": "tubealfred_youtube_video_transcript"
+        },
+        "cli": {
+          "command": "transcript"
+        },
+        "n8n": {
+          "resource": "video",
+          "operation": "getTranscript"
+        }
+      }
+    },
+    {
+      "id": "utility_resolve",
+      "method": "GET",
+      "path": "/v1/youtube/utility/resolve",
+      "summary": "Resolve URL",
+      "description": "Resolve a YouTube URL to canonical identifiers through TubeAlfred.",
+      "credit_cost": "1 credit per call",
+      "deprecated": false,
+      "parameters": [
+        {
+          "name": "url",
+          "in": "query",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "example": "https://www.youtube.com/watch?v=..."
+          },
+          "description": "Paste a full YouTube URL."
+        }
+      ],
+      "mcp": {
+        "name": "youtube_url_resolve",
+        "title": "Resolve YouTube URL",
+        "public": true
+      },
+      "platform": {
+        "class_basename": "ResolveYoutubeUrlTool",
+        "documented_endpoint_keys": [
+          "utility_resolve"
+        ],
+        "endpoint": {
+          "order": 31,
+          "label": "Resolve URL",
+          "summary": "Resolve any YouTube URL to its type and extracted IDs.",
+          "description": "Turns arbitrary YouTube URLs into canonical IDs.",
+          "insight_identifiers": [],
+          "parameters": {
+            "url": {
+              "label": "URL",
+              "placeholder": "https://www.youtube.com/watch?v=...",
+              "helper_text": "Paste a full YouTube URL."
+            }
+          }
+        }
+      },
+      "clients": {
+        "agent_tool": {
+          "name": "tubealfred_youtube_url_resolve"
+        },
+        "cli": {
+          "command": "resolve"
+        },
+        "n8n": {
+          "resource": "url",
+          "operation": "resolve"
+        }
+      }
+    },
+    {
+      "id": "videos_batch",
+      "method": "POST",
+      "path": "/v1/youtube/videos:batch",
+      "summary": "Batch video details",
+      "description": "Fetch details for multiple YouTube videos through TubeAlfred.",
+      "credit_cost": "1 credit per successfully resolved ID (up to 50 IDs per call)",
+      "deprecated": false,
+      "parameters": [
+        {
+          "name": "fields",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "type": "string",
+            "example": "id,title"
+          },
+          "description": "Comma-separated response fields to include."
+        },
+        {
+          "name": "ids",
+          "in": "body",
+          "required": true,
+          "schema": {
+            "type": "array",
+            "description": "YouTube video IDs.",
+            "example": "[\"dQw4w9WgXcQ\"]",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1,
+            "maxItems": 50,
+            "uniqueItems": true
+          },
+          "description": "YouTube video IDs."
+        }
+      ],
+      "mcp": {
+        "name": "youtube_videos_batch",
+        "title": "Batch Video Details",
+        "public": true
+      },
+      "platform": {
+        "class_basename": "BatchVideoDetailsTool",
+        "documented_endpoint_keys": [
+          "videos_batch"
+        ],
+        "endpoint": {
+          "order": 32,
+          "label": "Batch video details",
+          "summary": "Batch video details lookup.",
+          "description": "Fetch details for up to 50 YouTube video IDs.",
+          "insight_identifiers": [],
+          "parameters": {
+            "fields": {
+              "label": "Fields",
+              "placeholder": "id,title",
+              "helper_text": "Comma-separated response fields to include."
+            },
+            "ids": {
+              "label": "Video IDs",
+              "placeholder": "[\"dQw4w9WgXcQ\"]",
+              "helper_text": "YouTube video IDs.",
+              "rules": [
+                "min:1",
+                "max:50"
+              ],
+              "item_rules": [
+                "string"
+              ]
+            }
+          }
+        }
+      },
+      "clients": {
+        "agent_tool": {
+          "name": "tubealfred_youtube_videos_batch"
+        },
+        "cli": {
+          "command": "videos-batch"
+        },
+        "n8n": {
+          "resource": "batch",
+          "operation": "getVideos"
+        }
+      }
+    },
+    {
+      "id": "channels_batch",
+      "method": "POST",
+      "path": "/v1/youtube/channels:batch",
+      "summary": "Batch channel details",
+      "description": "Fetch details for multiple YouTube channels through TubeAlfred.",
+      "credit_cost": "1 credit per successfully resolved ID (up to 50 IDs per call)",
+      "deprecated": false,
+      "parameters": [
+        {
+          "name": "fields",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "type": "string",
+            "example": "id,title"
+          },
+          "description": "Comma-separated response fields to include."
+        },
+        {
+          "name": "ids",
+          "in": "body",
+          "required": true,
+          "schema": {
+            "type": "array",
+            "description": "YouTube channel IDs, handles, or usernames.",
+            "example": "[\"dQw4w9WgXcQ\"]",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1,
+            "maxItems": 50,
+            "uniqueItems": true
+          },
+          "description": "YouTube channel IDs, handles, or usernames."
+        }
+      ],
+      "mcp": {
+        "name": "youtube_channels_batch",
+        "title": "Batch Channel Details",
+        "public": true
+      },
+      "platform": {
+        "class_basename": "BatchChannelDetailsTool",
+        "documented_endpoint_keys": [
+          "channels_batch"
+        ],
+        "endpoint": {
+          "order": 33,
+          "label": "Batch channel details",
+          "summary": "Batch channel details lookup.",
+          "description": "Fetch details for up to 50 YouTube channel IDs, handles, or usernames.",
+          "insight_identifiers": [],
+          "parameters": {
+            "fields": {
+              "label": "Fields",
+              "placeholder": "id,title",
+              "helper_text": "Comma-separated response fields to include."
+            },
+            "ids": {
+              "label": "Channel IDs",
+              "placeholder": "[\"dQw4w9WgXcQ\"]",
+              "helper_text": "YouTube channel IDs, handles, or usernames.",
+              "rules": [
+                "min:1",
+                "max:50"
+              ],
+              "item_rules": [
+                "string"
+              ]
+            }
+          }
+        }
+      },
+      "clients": {
+        "agent_tool": {
+          "name": "tubealfred_youtube_channels_batch"
+        },
+        "cli": {
+          "command": "channels-batch"
+        },
+        "n8n": {
+          "resource": "batch",
+          "operation": "getChannels"
+        }
+      }
+    },
+    {
+      "id": "search",
+      "method": "GET",
+      "path": "/v1/youtube/search/",
+      "summary": "Search",
+      "description": "Search YouTube through TubeAlfred.",
+      "credit_cost": "1 credit per call",
+      "deprecated": false,
+      "parameters": [
+        {
+          "name": "query",
+          "in": "query",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "example": "how to learn faster"
+          },
+          "description": "Search query string."
+        },
+        {
+          "name": "continuation_token",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "type": "string",
+            "example": "Optional pagination token"
+          },
+          "description": "Leave blank for the first page."
+        },
+        {
+          "name": "channel_id",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "type": "string",
+            "example": "UC... or @handle"
+          },
+          "description": "Restrict search results to a single channel ID, handle, or username."
+        },
+        {
+          "name": "upload_date",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "type": "string",
+            "enum": [
+              "all",
+              "today",
+              "week",
+              "month",
+              "year"
+            ],
+            "example": "month"
+          },
+          "description": "Filter by upload date. One of: all, today, week, month, year."
+        },
+        {
+          "name": "duration",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "type": "string",
+            "enum": [
+              "all",
+              "under_three_mins",
+              "three_to_twenty_mins",
+              "over_twenty_mins"
+            ],
+            "example": "three_to_twenty_mins"
+          },
+          "description": "Filter by video duration. One of: all, under_three_mins, three_to_twenty_mins, over_twenty_mins."
+        },
+        {
+          "name": "sort",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "type": "string",
+            "enum": [
+              "relevance",
+              "popularity"
+            ],
+            "example": "relevance"
+          },
+          "description": "Search ranking preference. One of: relevance, popularity."
+        },
+        {
+          "name": "type",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "type": "string",
+            "enum": [
+              "all",
+              "video",
+              "shorts",
+              "channel",
+              "playlist",
+              "movie"
+            ],
+            "example": "video"
+          },
+          "description": "Restrict result type. One of: all, video, shorts, channel, playlist, movie."
+        },
+        {
+          "name": "features",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "type": "string",
+            "example": "hd,subtitles"
+          },
+          "description": "Comma-separated feature filters: hd, subtitles, creative_commons, 3d, live, purchased, 4k, 360, location, hdr, vr180."
+        },
+        {
+          "name": "live",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "type": "boolean",
+            "example": "true"
+          },
+          "description": "Shortcut for features=live."
+        },
+        {
+          "name": "shorts",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "type": "boolean",
+            "example": "true"
+          },
+          "description": "Shortcut for type=shorts."
+        }
+      ],
+      "mcp": {
+        "name": "youtube_search_query",
+        "title": "Search YouTube",
+        "public": true
+      },
+      "platform": {
+        "class_basename": "SearchYoutubeTool",
+        "documented_endpoint_keys": [
+          "search"
+        ],
+        "endpoint": {
+          "order": 23,
+          "label": "Search",
+          "summary": "YouTube search.",
+          "description": "Primary search endpoint with optional filters and continuation token. Each result description is YouTube's truncated snippet; use the video endpoint for the full description.",
+          "insight_identifiers": {
+            "search_query": "query"
+          },
+          "parameters": {
+            "query": {
+              "label": "Query",
+              "placeholder": "how to learn faster",
+              "helper_text": "Search query string."
+            },
+            "continuation_token": {
+              "label": "Continuation token",
+              "placeholder": "Optional pagination token",
+              "helper_text": "Leave blank for the first page.",
+              "rules": [
+                "min:1",
+                "max:50000"
+              ]
+            },
+            "channel_id": {
+              "label": "Channel ID / handle",
+              "placeholder": "UC... or @handle",
+              "helper_text": "Restrict search results to a single channel ID, handle, or username.",
+              "rules": [
+                "min:1",
+                "max:100",
+                "regex:/^(UC[a-zA-Z0-9_-]{22}|@[a-zA-Z0-9._-]{1,50}|[a-zA-Z0-9_-]{1,50})$/"
+              ]
+            },
+            "upload_date": {
+              "label": "Upload date",
+              "placeholder": "month",
+              "helper_text": "Filter by upload date. One of: all, today, week, month, year."
+            },
+            "duration": {
+              "label": "Duration",
+              "placeholder": "three_to_twenty_mins",
+              "helper_text": "Filter by video duration. One of: all, under_three_mins, three_to_twenty_mins, over_twenty_mins."
+            },
+            "sort": {
+              "label": "Sort",
+              "placeholder": "relevance",
+              "helper_text": "Search ranking preference. One of: relevance, popularity."
+            },
+            "type": {
+              "label": "Result type",
+              "placeholder": "video",
+              "helper_text": "Restrict result type. One of: all, video, shorts, channel, playlist, movie."
+            },
+            "features": {
+              "label": "Features",
+              "placeholder": "hd,subtitles",
+              "helper_text": "Comma-separated feature filters: hd, subtitles, creative_commons, 3d, live, purchased, 4k, 360, location, hdr, vr180.",
+              "rules": [
+                "regex:/^(hd|subtitles|creative_commons|3d|live|purchased|4k|360|location|hdr|vr180)(,(hd|subtitles|creative_commons|3d|live|purchased|4k|360|location|hdr|vr180))*$/"
+              ]
+            },
+            "live": {
+              "label": "Live only",
+              "placeholder": "true",
+              "helper_text": "Shortcut for features=live."
+            },
+            "shorts": {
+              "label": "Shorts only",
+              "placeholder": "true",
+              "helper_text": "Shortcut for type=shorts."
+            }
+          }
+        }
+      },
+      "clients": {
+        "agent_tool": {
+          "name": "tubealfred_youtube_search_query"
+        },
+        "cli": {
+          "command": "search"
+        },
+        "n8n": {
+          "resource": "search",
+          "operation": "search"
+        }
+      }
+    }
+  ]
+}

@@ -15,8 +15,10 @@
     "LICENSE"
   ],
   "scripts": {
-    "build": "tsup",
+    "build": "pnpm contract:check && tsup",
     "build:mcpb": "pnpm build && node mcpb/build.mjs",
+    "contract:sync": "node scripts/sync-contract.mjs",
+    "contract:check": "node scripts/sync-contract.mjs --check --source contracts/tubealfred-youtube-operations.v1.json",
     "dev": "tsup --watch",
     "test": "pnpm build && node --test tests/*.test.mjs",
     "prepublishOnly": "pnpm build"
