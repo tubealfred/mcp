@@ -20,7 +20,7 @@ const sourceText = source.startsWith("http://") || source.startsWith("https://")
   : await readFile(resolve(source), "utf8");
 const contract = JSON.parse(sourceText);
 
-if (contract.schema_version !== 1 || contract.manifest_version !== "1.0.0") {
+if (contract.schema_version !== 1 || contract.manifest_version !== "1.1.0") {
   throw new Error("unsupported TubeAlfred operation manifest version");
 }
 if (!Array.isArray(contract.operations) || contract.operation_count !== contract.operations.length) {

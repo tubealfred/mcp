@@ -13,7 +13,7 @@ const publicTools = contract.operations
 
 assert.equal(packageJson.name, "@tubealfred/mcp");
 assert.equal(packageJson.version, manifest.version);
-assert.equal(contract.manifest_version, "1.0.0");
+assert.equal(contract.manifest_version, "1.1.0");
 assert.equal(publicTools.length, 34);
 assert.match(manifest.long_description, /34 read-only YouTube research tools/);
 assert.match(readme, /versioned operation manifest/);
